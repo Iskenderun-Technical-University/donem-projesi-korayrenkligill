@@ -1,161 +1,264 @@
-.navbar {
+.pc-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10%;
-  box-shadow: 0px 10px 20px #0000001a;
+  padding: 10px 15%;
+  transition: all 0.4s;
+  background-color: #0099ff;
 }
-.navbar .frame img {
-  max-height: 60px;
+.pc-navbar .left {
+  display: flex;
+  gap: 1rem;
 }
-.navbar .profile-notlogged {
+.pc-navbar .left .logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-.navbar .profile-notlogged a {
-  padding: 15px 25px;
-  border-radius: 20px;
   text-decoration: none;
-  color: #444BFF;
-  font-family: 'Montserrat', sans-serif;
-  border: 1px solid transparent;
+  padding: 10px 10px;
+  color: white;
+  transition: all 0.5s;
+}
+.pc-navbar .left .logo img {
+  max-height: 20px;
+  margin-right: 0.7rem;
+  transition: all 0.5s;
+}
+.pc-navbar .left .logo .company-name {
+  font-weight: bold;
+}
+.pc-navbar .left .logo:hover {
+  margin-right: 0.4rem;
+}
+.pc-navbar .left .logo:hover img {
+  margin-right: 0.3rem;
+}
+.pc-navbar .left .navlink {
+  text-decoration: none;
+  padding: 10px 10px;
+  color: #eeeeee;
+  font-size: 1.1rem;
   transition: all 0.3s;
 }
-.navbar .profile-notlogged .login {
-  font-size: 1.1rem;
+.pc-navbar .left .navlink span {
+  display: block;
+  transition: all 0.3s;
 }
-.navbar .profile-notlogged .register {
-  font-size: 1rem;
-  background-color: #444BFF;
-  border: 1px solid #444BFF;
+.pc-navbar .left .navlink:hover span {
+  transform: translateY(-3px);
+}
+.pc-navbar .left .navlink.active {
   color: white;
+  transform: scale(1.15) translateY(-2px);
 }
-.navbar .profile-notlogged .login:hover {
-  font-size: 1rem;
-  background-color: #444BFF;
-  border: 1px solid #444BFF;
+.pc-navbar .right .not-logged {
+  display: flex;
+}
+.pc-navbar .right .not-logged .link {
+  padding: 10px 30px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.pc-navbar .right .not-logged .login {
   color: white;
+  transition: all 0.3s;
 }
-.navbar .profile-notlogged .register:hover {
+.pc-navbar .right .not-logged .login:hover {
+  color: #00d6a4;
+}
+.pc-navbar .right .not-logged .register {
+  background-color: #00d6a4;
+  color: white;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+.pc-navbar .right .not-logged .register:hover {
+  border: 1px solid #00d6a4;
   background-color: white;
-  color: #444BFF;
+  color: #45B8AC;
 }
-.navbar .profile-logged {
+.pc-navbar .right .logged {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  gap: 25px;
 }
-.navbar .profile-logged img {
-  max-height: 50px;
-  border-radius: 100px;
-}
-.navbar .profile-logged .ticket {
-  font-size: 1.7rem;
-  position: relative;
-  color: #444BFF;
+.pc-navbar .right .logged .profile,
+.pc-navbar .right .logged .my-tickets {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
   cursor: pointer;
 }
-.navbar .profile-logged .ticket .icon-notification {
-  width: 18px;
-  height: 18px;
-  background-color: #ff4040;
-  position: absolute;
-  top: 0px;
-  right: -5px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  color: white;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
+.pc-navbar .right .logged .profile img,
+.pc-navbar .right .logged .my-tickets img {
+  max-width: 50px;
+  border-radius: 100px;
 }
-.navbar .profile-logged .ticket .ticket-detail {
+.pc-navbar .right .logged .my-tickets {
+  position: relative;
+}
+.pc-navbar .right .logged .my-tickets .absolute {
+  display: block;
   position: absolute;
+  right: -100px;
   top: 50px;
-  right: -20px;
-  z-index: 1000;
+  z-index: 50;
   background-color: white;
-  border: 1px solid #0000003d;
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  width: 280px;
-  height: 330px;
-  overflow-y: scroll !important;
-  border-radius: 10px;
-  overflow: hidden;
+  border: 1px solid #c0c0c0;
+  min-width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 20px;
 }
-.navbar .profile-logged .ticket .ticket-detail .ticket-card {
+.pc-navbar .right .logged .my-tickets .absolute .ticket {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-}
-.navbar .profile-logged .ticket .ticket-detail .ticket-card .ticket-card-name h2 {
-  font-size: 1rem;
-  color: black;
-}
-.navbar .profile-logged .ticket .ticket-detail .ticket-card .ticket-card-name p {
-  font-size: 0.7rem;
-  color: black;
-}
-.navbar .profile-logged .ticket .ticket-detail .ticket-card .ticket-card-date {
-  text-align: center;
-}
-.navbar .profile-logged .ticket .ticket-detail .ticket-card .ticket-card-date p {
-  font-size: 0.7rem;
-  color: black;
-}
-.navbar .profile-logged .ticket .ticket-detail .ticket-card:hover {
-  background-color: #0000000c;
-}
-.navbar .profile-logged .ticket .ticket-detail-active {
-  display: flex;
-}
-.navbar .profile-logged .profile-photo {
-  position: relative;
+  padding: 15px 20px;
   cursor: pointer;
 }
-.navbar .profile-logged .profile-photo .profile-detail {
-  position: absolute;
-  top: 60px;
-  right: -20px;
-  z-index: 1000;
-  background-color: white;
-  border: 1px solid #0000003d;
-  display: none;
+.pc-navbar .right .logged .my-tickets .absolute .ticket .ticket-name {
+  color: #242424;
+  text-align: left;
+  font-size: 1.2rem;
+}
+.pc-navbar .right .logged .my-tickets .absolute .ticket .ticket-kn {
+  text-align: left;
+  font-size: 0.8rem;
+  margin-left: 1rem;
+  color: #494949;
+}
+.pc-navbar .right .logged .my-tickets .absolute .ticket .ticket-date {
+  color: #242424;
+  font-size: 1rem;
+}
+.pc-navbar .right .logged .my-tickets .absolute-none {
+  display: none !important;
+}
+.pc-navbar .right .logged .my-tickets .ticket:hover {
+  background-color: rgba(223, 223, 223, 0.171);
+}
+.pc-navbar .right .logged .profile {
+  position: relative;
+}
+.pc-navbar .right .logged .profile .absolute {
+  display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 180px;
-  border-radius: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  z-index: 50;
+  min-width: 240px;
+  background-color: white;
+  border: 1px solid #c0c0c0;
+  border-radius: 20px;
   overflow: hidden;
 }
-.navbar .profile-logged .profile-photo .profile-detail p {
-  padding: 10px 20px;
-}
-.navbar .profile-logged .profile-photo .profile-detail p:hover {
-  background-color: #0000000c;
-}
-.navbar .profile-logged .profile-photo .profile-detail .detail-icon {
-  transform: translateY(2px);
-  margin-right: 4px;
-}
-.navbar .profile-logged .profile-photo .profile-detail-active {
-  display: flex;
-}
-.navbar .all-detail-close {
-  width: 99vw;
-  height: 100vh;
+.pc-navbar .right .logged .profile .absolute button {
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  color: #494949;
   background-color: transparent;
-  z-index: 990;
+  border: none;
+}
+.pc-navbar .right .logged .profile .absolute button .profile-detail-icon {
+  color: #242424;
+  transform: translateY(2px);
+  margin-right: 5px;
+}
+.pc-navbar .right .logged .profile .absolute button:hover {
+  background-color: rgba(223, 223, 223, 0.171);
+}
+.pc-navbar .right .logged .profile .absolute button:first-child {
+  padding-top: 15px;
+}
+.pc-navbar .right .logged .profile .absolute button:last-child {
+  padding-bottom: 15px;
+}
+.pc-navbar .right .logged .profile .absolute-none {
+  display: none !important;
+}
+.pc-navbar .all-detail-close {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 25;
+  width: 99vw;
+  height: 99vh;
   border: none;
   outline: none;
-  position: absolute;
+  display: block;
+  background-color: transparent;
+}
+.pc-navbar .all-detail-close-none {
+  display: none;
+}
+.mobile-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px 5px 15px #c0c0c0;
+  padding: 5px 0px;
+  position: fixed;
+  z-index: 9999;
+  bottom: 0px;
   left: 0px;
-  top: 0px;
+  width: 100%;
+}
+.mobile-navbar .link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 10px;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #c0c0c0;
+}
+.mobile-navbar .link .fill {
+  display: none;
+}
+.mobile-navbar .link .not-fill {
+  display: block;
+}
+.mobile-navbar .link span {
+  font-size: 0.7rem;
+  display: none;
+}
+.mobile-navbar .link.active {
+  color: black;
+}
+.mobile-navbar .link.active .fill {
+  display: block;
+}
+.mobile-navbar .link.active .not-fill {
+  display: none;
+}
+.mobile-navbar .link.active span {
+  font-size: 0.7rem;
+  display: block;
+}
+.mobile-navbar .link:not(:last-child) {
+  border-right: 1px solid rgba(128, 128, 128, 0.171);
+}
+@media screen and (max-width: 1440px) {
+  .pc-navbar {
+    padding: 10px 5%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .pc-navbar .left .logo {
+    padding: 10px 5px;
+  }
+  .pc-navbar .right .not-logged .link {
+    padding: 10px 15px;
+  }
 }

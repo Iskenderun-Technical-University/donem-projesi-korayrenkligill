@@ -1,12 +1,22 @@
-import './styles/App.css';
-import { Routes, Route } from 'react-router-dom';
-import PcNavbar from './components/navbar/pc-navbar';
+import React from 'react'
+import Navbar from './components/navbar/navbar'
+import { Route,Routes } from 'react-router-dom'
+import MainPage from './components/pages/main-page'
+import Company from './components/pages/company'
+import Footer from './components/footer'
+import ErrorPage from './components/pages/error404'
 function App() {
   return (
-    <div className="App">
-      <PcNavbar logged={true} ticket={4}/>
+    <div className='app'>
+      <Navbar isLogged={true}/>
+      <Routes>
+        <Route path='/' element={<MainPage/>}/>
+        <Route path='/hakkımızda' element={<Company/>}/>
+        <Route path='/*' element={<ErrorPage/>}/>
+      </Routes>
+      <Footer/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

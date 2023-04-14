@@ -1,165 +1,279 @@
-.navbar{
+@import '../variables.less';
+.pc-navbar{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 10%;
-    box-shadow: 0px 10px 20px #0000001a;
-    .frame{
-        img{
-            max-height: 60px;
-        }
-    }
-    .profile-notlogged{
+    padding: 10px 15%;
+    transition: all .4s;
+    background-color: @color-mavi;
+    .left{
         display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        a{
-            padding: 15px 25px;
-            border-radius: 20px;
+        gap: 1rem;
+        .logo{
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            color: #444BFF;
-            font-family: 'Montserrat', sans-serif;
-            border: 1px solid transparent;
-            transition: all .3s;
+            padding: 10px 10px;
+            color: @color-white;
+            transition: all .5s;
+            img{
+                max-height: 20px;
+                margin-right: .7rem;
+                transition: all .5s;
+            }
+            .company-name{
+                font-weight: bold;
+            }
         }
-        .login{
+        .logo:hover{
+            margin-right: .4rem;
+            img{
+                margin-right: .3rem;
+            }
+        }
+        .navlink{
+            text-decoration: none;
+            padding: 10px 10px;
+            color: @color-white1;
             font-size: 1.1rem;
+            transition: all .3s;
+            span{
+                display: block;
+                transition: all .3s;
+            }
         }
-        .register{
-            font-size: 1rem;
-            background-color: #444BFF;
-            border: 1px solid #444BFF;
-            color: white;
+        .navlink:hover{
+            span{
+                transform: translateY(-3px);
+            }
         }
-        .login:hover{
-            font-size: 1rem;
-            background-color: #444BFF;
-            border: 1px solid #444BFF;
-            color: white;
-        }
-        .register:hover{
-            background-color: white;
-            color: #444BFF;
+        .navlink.active{
+            color: @color-white;
+            transform: scale(1.15) translateY(-2px);
         }
     }
-    .profile-logged{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        img{
-            max-height: 50px;
-            border-radius: 100px;
-        }
-        .ticket{
-            font-size: 1.7rem;
-            position: relative;
-            color: #444BFF;
-            cursor: pointer;
-            .icon-notification{
-                width: 18px;
-                height: 18px;
-                background-color: #ff4040;
-                position: absolute;
-                top: 0px;
-                right: -5px;
-                border-radius: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: .7rem;
-                color: white;
-                font-weight: bold;
-                font-family: 'Montserrat', sans-serif;
+    .right{
+        .not-logged{
+            display: flex;
+            .link{
+                padding: 10px 30px;
+                border-radius: 20px;
+                text-decoration: none;
             }
-            .ticket-detail{
-                position: absolute;
-                top: 50px;
-                right: -20px;
-                z-index: 1000;
-                background-color: white;
-                border: 1px solid #0000003d;
-                display: none;
-                flex-direction: column;
-                gap: 5px;
-                width: 280px;
-                height: 330px;
-                overflow-y: scroll !important;
-                border-radius: 10px;
-                overflow:hidden;
-                .ticket-card{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 10px 20px;
-                    .ticket-card-name{
-                        h2{
+            .login{
+                color: @color-white;
+                transition: all .3s;
+            }
+            .login:hover{
+                color: @color-yesil;
+            }
+            .register{
+                background-color: @color-yesil;
+                color: @color-white;
+                transition: all .3s;
+                border: 1px solid transparent;
+            }
+            .register:hover{
+                border: 1px solid @color-yesil;
+                background-color: @color-white;
+                color: @color-turquoise;
+            }
+        }
+        .logged{
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            .profile,.my-tickets{
+                background-color: transparent;
+                border: none;
+                font-size: 1.5rem;
+                color: @color-white;
+                cursor: pointer;
+                img{
+                    max-width: 50px;
+                    border-radius: 100px;
+                }
+            }
+            .my-tickets{
+                position: relative;
+                .absolute{
+                    display: block;
+                    position: absolute;
+                    right: -100px;
+                    top: 50px;
+                    z-index: 50;
+                    background-color: @color-white;
+                    border: 1px solid @color-grey;
+                    min-width: 350px;
+                    max-height: 400px;
+                    overflow-y: auto;
+                    border-radius: 20px;
+                    .ticket{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 15px 20px;
+                        cursor: pointer;
+                        .ticket-name{
+                            color: @color-black-1;
+                            text-align: left;
+                            font-size: 1.2rem;
+                        }
+                        .ticket-kn{
+                            text-align: left;
+                            font-size: .8rem;
+                            margin-left: 1rem;
+                            color: @color-grey-0;
+                        }
+                        .ticket-date{
+                            color: @color-black-1;
                             font-size: 1rem;
-                            color: black;
-                        }
-                        p{
-                            font-size: .7rem;
-                            color: black;
-                        }
-                    }
-                    .ticket-card-date{
-                        text-align:center;
-                        p{
-                            font-size: .7rem;
-                            color: black;
                         }
                     }
                 }
-                .ticket-card:hover{
-                    background-color: #0000000c;
+                .absolute-none{
+                    display: none !important;
+                }
+                .ticket:hover{
+                    background-color: @color-grey-02;
                 }
             }
-            .ticket-detail-active{
-                display: flex;
-            }
-        }
-        .profile-photo{
-            position: relative;
-            cursor: pointer;
-            .profile-detail{
-                position: absolute;
-                top: 60px;
-                right: -20px;
-                z-index: 1000;
-                background-color: white;
-                border: 1px solid #0000003d;
-                display: none;
-                flex-direction: column;
-                gap: 5px;
-                width: 180px;
-                border-radius: 10px;
-                overflow:hidden;
-                p{
-                    padding: 10px 20px;
+            .profile{
+                position: relative;
+                .absolute{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    position: absolute;
+                    top: 50px;
+                    right: 0px;
+                    z-index: 50;
+                    min-width: 240px;
+                    background-color: @color-white;
+                    border: 1px solid @color-grey;
+                    border-radius: 20px;
+                    overflow: hidden;
+                    button{
+                        font-size: 1.2rem;
+                        padding: 10px 15px;
+                        width: 100%;
+                        text-align: left;
+                        color: @color-grey-0;
+                        background-color: transparent;
+                        border: none;
+                        .profile-detail-icon{
+                            color: @color-black-1;
+                            transform: translateY(2px);
+                            margin-right: 5px;
+                        }
+                    }
+                    button:hover{
+                        background-color: @color-grey-02;
+                    }
+                    button:first-child{
+                        padding-top: 15px;
+                    }
+                    button:last-child{
+                        padding-bottom: 15px;
+                    }
                 }
-                p:hover{
-                    background-color: #0000000c;
+                .absolute-none{
+                    display: none !important;
                 }
-                .detail-icon{
-                    transform: translateY(2px);
-                    margin-right: 4px;
-                }
-            }
-            .profile-detail-active{
-                display: flex;
             }
         }
     }
     .all-detail-close{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 25;
         width: 99vw;
-        height: 100vh;
+        height: 99vh;
         background-color: transparent;
-        z-index: 990;
         border: none;
         outline: none;
-        position: absolute;
-        left: 0px;
-        top: 0px;
+        display: block;
+        background-color: transparent;
+    }
+    .all-detail-close-none{
+        display: none;
+    }
+}
+.mobile-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: @color-white;
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 0px 5px 15px @color-grey;
+    padding: 5px 0px;
+    position: fixed;
+    z-index: 9999;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    .link{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        padding: 10px 10px;
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: @color-grey;
+        .fill{
+            display: none;
+        }
+        .not-fill{
+            display: block;
+        }
+        span{
+            font-size: .7rem;
+            display: none;
+        }
+    }
+    .link.active{
+        color: @color-black;
+        .fill{
+            display: block;
+        }
+        .not-fill{
+            display: none;
+        }
+        span{
+            font-size: .7rem;
+            display: block;
+        }
+    }
+    .link:not(:last-child){
+        border-right: 1px solid @color-grey-01;
+    }
+}
+@media screen and (max-width: 2000px) {
+    
+}
+@media screen and (max-width: 1440px) {
+    .pc-navbar{
+        padding: 10px 5%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .pc-navbar{
+        .left{
+            .logo{
+                padding: 10px 5px;
+            }
+        }
+        .right{
+            .not-logged{
+                .link{
+                    padding: 10px 15px;
+                }
+            }
+        }
     }
 }
