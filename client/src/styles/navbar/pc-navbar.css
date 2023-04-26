@@ -120,17 +120,17 @@
 .pc-navbar .right .logged .my-tickets .absolute .ticket .ticket-name {
   color: #242424;
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .pc-navbar .right .logged .my-tickets .absolute .ticket .ticket-kn {
   text-align: left;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   margin-left: 1rem;
   color: #494949;
 }
 .pc-navbar .right .logged .my-tickets .absolute .ticket .ticket-date {
   color: #242424;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .pc-navbar .right .logged .my-tickets .absolute-none {
   display: none !important;
@@ -157,7 +157,7 @@
   overflow: hidden;
 }
 .pc-navbar .right .logged .profile .absolute button {
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 10px 15px;
   width: 100%;
   text-align: left;
@@ -234,7 +234,7 @@
   display: none;
 }
 .mobile-navbar .link.active {
-  color: black;
+  color: #444444;
 }
 .mobile-navbar .link.active .fill {
   display: block;

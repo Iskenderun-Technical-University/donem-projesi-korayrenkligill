@@ -1,0 +1,13 @@
+.admin {
+  margin: 0px 15%;
+  display: flex;
+}
+.admin .sidebar-main {
+  margin-top: 50px;
+  flex: 1;
+}
+.admin .main {
+  flex: 4;
+  min-height: 70vh;
+  background-color: #fbfbfb;
+}

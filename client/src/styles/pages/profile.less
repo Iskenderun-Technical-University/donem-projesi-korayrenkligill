@@ -1,0 +1,154 @@
+@import '../variables.less';
+
+.profile{
+    margin: 0px 20%;
+    .profile-notchange{
+        margin-top: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0px 7px 23px rgba(0, 0, 0, 0.144);
+        .profile-frame{
+            img{
+                border-radius: 500px;
+            }
+        }
+        .texts{
+            h2{
+                color: @color-black;
+            }
+            p{
+                color: @color-grey-0;
+            }
+        }
+        .buttons{
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            display: flex;
+            gap: 20px;
+            button{
+                background-color: transparent;
+                border: none;
+                font-size: 1.1rem;
+                color: @color-black;
+            }
+        }
+    }
+    .profile-change{
+        margin-top: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0px 7px 23px rgba(0, 0, 0, 0.144);
+        .profile-frame{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            input{
+                display: none;
+            }
+            label{
+                background-color: transparent;
+                color: @color-mavi;
+                border: none;
+                text-align: center;
+            }
+            label:hover{
+                color: @color-black;
+            }
+            img{
+                border-radius: 500px;
+            }
+        }
+        .texts{
+            .name{
+                font-size: 1rem;
+                margin-right: 10px;
+            }
+            .surname{
+                font-size: 1rem;
+            }
+        }
+        .buttons{
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            display: flex;
+            gap: 20px;
+            button{
+                background-color: transparent;
+                border: none;
+                font-size: 1.1rem;
+                color: @color-black;
+            }
+        }
+    }
+    .tickets{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+        gap: 30px;
+        .ticket{
+            display: flex;
+            justify-content: space-between;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: @color-grey-02;
+            position: relative;
+            z-index: 2;
+            .left{
+                display: flex;
+                .ticket-state-usable{
+                    height: 100%;
+                    width: 10px;
+                    background-color: rgb(129, 245, 139);
+                }
+                .ticket-state-past{
+                    height: 100%;
+                    width: 10px;
+                    background-color: rgb(218, 81, 81);
+                }
+                .ticket-texts{
+                    padding: 20px;
+                    h2{
+                        font-size: 1.2rem;
+                        color: @color-black;
+                    }
+                    p{
+                        font-size: .9rem;
+                        margin-bottom: 10px;
+                        color: @color-black;
+                    }
+                    button{
+                        padding: 5px 20px 5px 0px;
+                        text-align: left;
+                        background-color: transparent;
+                        border: none;
+                        color: @color-mavi;
+                        transition: all .2s;
+                        cursor: pointer;
+                    }
+                    button:hover{
+                        color: @color-black;
+                    }
+                }
+            }
+            .koltuk-numarasi{
+                height: 100%;
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+            }
+        }
+    }
+}

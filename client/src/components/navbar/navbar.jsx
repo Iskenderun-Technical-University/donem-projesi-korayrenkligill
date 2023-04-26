@@ -1,10 +1,12 @@
 import '../../styles/navbar/pc-navbar.css'
 import React, { useEffect, useState } from 'react'
 import Logo from '../../images/logo/Logo.png'
-import {NavLink,Link} from 'react-router-dom'
+import {NavLink,Link, useNavigate} from 'react-router-dom'
 import { BsBarChartFill,BsFillSunFill,BsFillDoorOpenFill,BsTicketPerforatedFill,BsHouseDoor,BsHouseDoorFill,BsGeoAlt,BsGeoAltFill,BsInfoCircle,BsInfoCircleFill,BsPerson,BsPersonFill } from "react-icons/bs";
 
 function Navbar(props){
+    const navigate = useNavigate();
+
     const[ticketDetail,setTicketDetail] = useState("absolute-none");
     const[profileDetail,setProfileDetail] = useState("absolute-none");
     const[allCloseButton,setAllCloseButton] = useState("all-detail-close-none");
@@ -86,9 +88,8 @@ function Navbar(props){
                         <div className='profile' onClick={profileDetailOpen}>
                             <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="" />
                             <div className={profileDetail}>
-                                <button><BsPersonFill className='profile-detail-icon'/>Profile</button>
-                                <button><BsBarChartFill className='profile-detail-icon'/>Yönetim Paneli</button>
-                                <button><BsTicketPerforatedFill className='profile-detail-icon'/>Biletlerim</button>
+                                <button onClick={()=>{navigate("/profil")}}><BsPersonFill className='profile-detail-icon'/>Profile</button>
+                                <button onClick={()=>{navigate("/admin")}}><BsBarChartFill className='profile-detail-icon'/>Yönetim Paneli</button>
                                 <button><BsFillSunFill className='profile-detail-icon'/>Tema Değiştir</button>
                                 <button><BsFillDoorOpenFill className='profile-detail-icon'/>Çıkış yap</button>
                             </div>

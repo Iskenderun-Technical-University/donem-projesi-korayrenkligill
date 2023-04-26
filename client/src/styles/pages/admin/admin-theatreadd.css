@@ -1,0 +1,68 @@
+.admin-theatreadd .header {
+  margin-top: 50px;
+  color: #0099ff;
+  font-size: 1.5rem;
+  padding-left: 40px;
+}
+.admin-theatreadd .description {
+  color: #005a96;
+  padding-left: 40px;
+}
+.admin-theatreadd .theatre-add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.admin-theatreadd .theatre-add-form .choose-image {
+  margin-top: 50px;
+  width: 250px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(128, 128, 128, 0.171);
+  color: white;
+  font-size: 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.admin-theatreadd .theatre-add-form .form-item {
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #b4b4b4;
+  color: #444444;
+}
+.admin-theatreadd .theatre-add-form button {
+  padding: 10px 50px;
+  font-size: 0.7rem;
+  border: none;
+  background-color: #0099ff;
+  border-radius: 20px;
+  color: white;
+}
+.admin-theatreadd .theatre-add-form .choose-session-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.admin-theatreadd .theatre-add-form .choose-session-panel input {
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #b4b4b4;
+  color: #444444;
+}
+.admin-theatreadd .theatre-add-form .sessions {
+  width: 80%;
+}
+.admin-theatreadd .theatre-add-form .sessions h2 {
+  color: #c0c0c0;
+  font-weight: 400;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #c0c0c0;
+}
+.admin-theatreadd .theatre-add-form .sessions .margin-bottom {
+  margin-bottom: 50px;
+}

@@ -16,6 +16,7 @@
   position: relative;
 }
 .company .who-are-we .text {
+  color: #444444;
   flex: 1;
 }
 .company .who-are-we .text h2 {
@@ -31,6 +32,10 @@
 }
 .company .who-are-we .frame img {
   width: 100%;
+  transition: all 0.3s;
+}
+.company .who-are-we .frame img:hover {
+  transform: scale(1.1);
 }
 .company .who-are-we .header-wave {
   position: absolute;
@@ -71,6 +76,7 @@
   transform: scale(1.1);
 }
 .company .our-managers {
+  color: #444444;
   display: flex;
   flex-direction: column;
   align-items: center;

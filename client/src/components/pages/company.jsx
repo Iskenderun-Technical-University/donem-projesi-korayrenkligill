@@ -85,7 +85,6 @@ function Company() {
             <div className="frame">
                 <img src="https://www.thebalancemoney.com/thmb/frmG5-EqfKTdObh6ofTewOTI5N4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/group-of-young-adults-stood-in-office-environment-925260686-5b37905246e0fb00374456f0.jpg" alt="Toplu çalışan ekibi görseli" />
             </div>
-            <svg className='header-wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,96L48,96C96,96,192,96,288,85.3C384,75,480,53,576,80C672,107,768,181,864,208C960,235,1056,213,1152,176C1248,139,1344,85,1392,58.7L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
         </div>
         <div className='aim'>
             <h2>Hedeflerimiz</h2>
@@ -113,7 +112,6 @@ function Company() {
                         <p>“ {text.text} ”</p>
                     </div>
                 </div>
-                <svg className='footer-wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L60,160C120,160,240,160,360,176C480,192,600,224,720,234.7C840,245,960,235,1080,218.7C1200,203,1320,181,1380,170.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
             </div>
             :
             <div className='our-managers'>
@@ -134,7 +132,6 @@ function Company() {
                         <p>“ {textList[3].text} ”</p>
                     </div>
                 </div>
-                <svg className='footer-wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,160L60,160C120,160,240,160,360,176C480,192,600,224,720,234.7C840,245,960,235,1080,218.7C1200,203,1320,181,1380,170.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
             </div>
         }
     </div>

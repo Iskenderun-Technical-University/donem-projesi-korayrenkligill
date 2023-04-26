@@ -21,8 +21,8 @@ function Footer() {
       </div>
       <div>
         <h2>Adresimiz</h2>
-        <a><BsGeoAltFill className='footer-icon'/>Yenimahalle 4747 sokak no 16/A</a>
-        <a>Yunusemre / Manisa</a>
+        <a><BsGeoAltFill className='footer-icon'/>Yarhasanlar, 1706. Sk., 45020 Manisa</a>
+        <a>Merkez / Manisa</a>
       </div>
     </div>
   )
