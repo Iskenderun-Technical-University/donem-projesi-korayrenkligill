@@ -1,112 +1,277 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Filter from '../filter'
-import Footer from '../footer';
 import '../../styles/pages/main-page.css'
-function MainPage() {
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+function MainPage(props) {
+    const navigate = useNavigate();
+
     const [selectedCategory,setSelectedCategory] = useState("");
     const [selectedPrice,setSelectedPrice] = useState("");
     const [selectedDate,setSelectedDate] = useState("");
 
-    const theatres = [
-        {
-            isim: "Tiyatro ismi 1",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","drama"],
-        },
-        {
-            isim: "Tiyatro ismi 2",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","komedi"],
-        },
-        {
-            isim: "Tiyatro ismi 3",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","opera"],
-        },
-        {
-            isim: "Tiyatro ismi 4",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","müzikal"],
-        },
-        {
-            isim: "Tiyatro ismi 5",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","skeç"],
-        },
-        {
-            isim: "Tiyatro ismi 6",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","pandomim"],
-        },
-        {
-            isim: "Tiyatro ismi 7",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","skeç"],
-        },
-        {
-            isim: "Tiyatro ismi 8",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","müzikal"],
-        },
-        {
-            isim: "Tiyatro ismi 9",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","drama"],
-        },
-        {
-            isim: "Tiyatro ismi 10",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","pandomim"],
-        },
-        {
-            isim: "Tiyatro ismi 11",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","drama"],
-        },
-        {
-            isim: "Tiyatro ismi 12",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","müzikal"],
-        },
-        {
-            isim: "Tiyatro ismi 13",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","drama"],
-        },
-        {
-            isim: "Tiyatro ismi 14",
-            fiyat: 40,
-            resim: "https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg",
-            categories: ["","skeç"],
-        },
-    ]
-    console.log(theatres[0].categories.indexOf(selectedCategory), selectedCategory);
+    var priceSplit;
+    if(selectedPrice != "ücretsiz" && selectedPrice != "" && selectedPrice != "80₺ ve üzeri")
+        priceSplit = selectedPrice.replace("₺", "").replace("₺", "").replace(" ", "").replace(" ", "").split("-");
+    else if(selectedPrice == "80₺ ve üzeri")
+        priceSplit = 80;
+    else if(selectedPrice == "ücretsiz")
+        priceSplit = 0;
+    else
+        priceSplit = -1;
+
+
+    const filteredTheatres = [];
+    const theatreIds = [];
+    const splitDate = selectedDate.split("/");
+    props.theatres.forEach(theatre => {
+        const session = JSON.parse(theatre.sessions)
+        const categories = JSON.parse(theatre.categories)
+        if(selectedCategory == ""){
+            if(priceSplit === -1){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+            else if(priceSplit != 0 && priceSplit != 80 && priceSplit != -1 && priceSplit[0] <= theatre.price && priceSplit[1] >= theatre.price){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+            else if(priceSplit === 0 && theatre.price == 0){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+            else if(priceSplit === 80 && theatre.price >= 80){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+        }
+        else if(categories.includes(selectedCategory))  {
+            if(priceSplit === -1){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+            else if(priceSplit != 0 && priceSplit != 80 && priceSplit != -1 && priceSplit[0] <= theatre.price && priceSplit[1] >= theatre.price){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+            else if(priceSplit === 0 && theatre.price == 0){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+            else if(priceSplit === 80 && theatre.price >= 80){
+                session.forEach(sessionItem => {
+                    var splitSession = sessionItem.date.split("-");
+                    if(selectedDate != ""){
+                        if(Number(splitSession[1]) == Number(splitDate[1])){
+                            if (Number(splitSession[2]) >= Number(splitDate[0])){
+                                if(!theatreIds.includes(theatre.id)){
+                                    filteredTheatres.push(theatre);
+                                    theatreIds.push(theatre.id);
+                                }
+                            }
+                        }
+                        else if(Number(splitSession[1]) > Number(splitDate[1])){
+                            if(!theatreIds.includes(theatre.id)){
+                                filteredTheatres.push(theatre);
+                                theatreIds.push(theatre.id);
+                            }
+                        }
+                    }
+                    else{
+                        if(!theatreIds.includes(theatre.id)){
+                            filteredTheatres.push(theatre);
+                            theatreIds.push(theatre.id);
+                        }
+                    }
+                });
+            }
+
+        }
+    });
     return (
     <div className='main-page'>
         <Filter selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
         <div className='theatres'>
-
-            {theatres.map((theatre,key)=>{
-                if(theatre.categories.indexOf(selectedCategory) >= 0)
+            {filteredTheatres.map((theatre,key)=>{
+                const session = JSON.parse(theatre.sessions)
+                // if(theatre.categories.indexOf(selectedCategory) >= 0)
                     return(
-                    <div key={key} className='theatre'>
-                        <img src={theatre.resim} alt=""/>
+                    <div onClick={()=>{navigate(`/theatre/detail/${theatre.id}`)}} key={key} className='theatre'>
+                        <div className="frame">
+                            <img src={theatre.image} alt=""/>
+                        </div>
                         <div className='theatre-name'>
-                            <h3>{theatre.isim}</h3>
-                            <h3>{theatre.fiyat}₺</h3>
+                            <h3>{theatre.name}</h3>
+                            <h3>{theatre.price}₺</h3>
+                        </div>
+                        <div className='sessions'>
+                            {session.map((item,itemKey)=>{return(
+                                <div key={itemKey}>
+                                    <p>{item.date} / {item.time}</p> 
+                                </div>
+                            )})}
                         </div>
                     </div>
                 )

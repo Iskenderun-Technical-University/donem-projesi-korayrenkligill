@@ -24,11 +24,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
-.main-page .theatres .theatre img {
-  width: 100%;
+.main-page .theatres .theatre .frame {
+  overflow: hidden;
   border-radius: 15px;
+}
+.main-page .theatres .theatre .frame img {
+  width: 100%;
+  transition: all 0.3s;
+}
+.main-page .theatres .theatre .frame img:hover {
+  transform: scale(1.1);
 }
 .main-page .theatres .theatre .theatre-name {
   display: flex;

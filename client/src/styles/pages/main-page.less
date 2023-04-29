@@ -36,10 +36,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            img{
-                width: 100%;
+            .frame{
+                overflow: hidden;
                 border-radius: 15px;
+                img{
+                    width: 100%;
+                    transition: all .3s;
+                }
+                img:hover{
+                    transform: scale(1.1);
+                }
             }
             .theatre-name{
                 display: flex;

@@ -1,0 +1,54 @@
+.login-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  overflow: hidden;
+}
+.login-register .login-or-register {
+  display: flex;
+  width: 263px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-start;
+}
+.login-register .login-or-register .login,
+.login-register .login-or-register .register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s;
+}
+.login-register .login-or-register .login h2,
+.login-register .login-or-register .register h2 {
+  color: #0099ff;
+}
+.login-register .login-or-register .login input,
+.login-register .login-or-register .register input {
+  margin-top: 1rem;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border: 1px solid #c0c0c0;
+}
+.login-register .login-or-register .login button,
+.login-register .login-or-register .register button {
+  margin-top: 2rem;
+  padding: 10px 60px;
+  background-color: #00d6a4;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.login-register .login-or-register .login p,
+.login-register .login-or-register .register p {
+  margin-top: 10px;
+  color: #0099ff;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.login-register .login-or-register .login p:hover,
+.login-register .login-or-register .register p:hover {
+  color: #444444;
+}

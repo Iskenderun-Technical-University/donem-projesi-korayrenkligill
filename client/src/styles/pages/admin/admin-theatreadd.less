@@ -16,11 +16,30 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        .number-input{
+            width: 80%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            input{
+                width: 100%;
+                padding: 10px;
+                border-radius: 10px;
+                border: 1px solid @color-white3;
+                color: @color-black;
+            }
+            label{
+                font-size: .8rem;
+                color: @color-grey;
+                word-wrap: break-word;
+            }
+        }
         .choose-image{
             margin-top: 50px;
-            width: 250px;
-            height: 350px;
+            width: 300px;
+            height: 400px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             background-color: @color-grey-01;
@@ -28,6 +47,25 @@
             font-size: 2rem;
             border-radius: 20px;
             cursor: pointer;
+            p{
+                font-size: 1.5rem;
+            }
+            span{
+                font-size: 1rem;
+            }
+        }
+        .choosed-image{
+            margin-top: 50px;
+            width: 300px;
+            height: 400px;
+            display: flex;
+            background-color: @color-grey-01;
+            border-radius: 20px;
+            cursor: pointer;
+            overflow: hidden;
+            img{
+                width: 100%;
+            }
         }
         .form-item{
             width: 80%;
@@ -36,13 +74,17 @@
             border: 1px solid @color-white3;
             color: @color-black;
         }
-        button{
+        .theatre-description{
+            resize: vertical;
+        }
+        .add-session{
             padding: 10px 50px;
             font-size: .7rem;
             border: none;
             background-color: @color-mavi;
             border-radius: 20px;
             color: @color-white;
+            cursor: pointer;
         }
         .choose-session-panel{
             display: flex;
@@ -56,6 +98,12 @@
                 color: @color-black;
             }
         }
+        .error-message{
+            color: rgb(255, 94, 94);
+        }
+        .everything-ok{
+            display: none;
+        }
         .sessions{
             width: 80%;
             h2{
@@ -67,6 +115,15 @@
             .margin-bottom{
                 margin-bottom: 50px;
             }
+        }
+        .add-theatre{
+            padding: 15px 60px;
+            font-size: 1rem;
+            border: none;
+            background-color: @color-yesil;
+            border-radius: 20px;
+            color: @color-white;
+            cursor: pointer;
         }
     }
 }

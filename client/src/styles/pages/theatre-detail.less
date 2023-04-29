@@ -1,0 +1,173 @@
+@import '../variables.less';
+
+.detail-page{
+    padding: 50px 0px;
+    position: relative;
+    width: 100%;
+    .details{
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        margin: 0px 15%;
+        .frame{
+            max-width: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 6px solid @color-white;
+            img{
+                width: 100%;
+                transition: all .3s;
+            }
+            img:hover{
+                transform: scale(1.1);
+            }
+        }
+        .right{
+            margin-top: 50px;
+            width: 100%;
+            .first-row{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: @color-white;
+                .header{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    p{
+                        color: @color-white2;
+                        .icon{
+                            transform: translateY(2px) scale(1.5);
+                            margin-right: .5rem;
+                        }
+                    }
+                }
+            }
+            .trailer{
+                margin-top: 1rem;
+                color: @color-white1;
+            }
+            .cast{
+                margin-top: 2rem;
+                color: @color-white;
+                .icon{
+                    transform: translateY(2px) scale(1.5);
+                    margin-right: .5rem;
+                }
+                .cast-span{
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+            .categories{
+                margin-top: .7rem;
+                color: @color-white;
+                .icon{
+                    transform: translateY(2px) scale(1.5);
+                    margin-right: .5rem;
+                }
+                .category-span{
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+    .rules{
+        margin: 40px 15%;
+        ul{
+            margin-top: 1rem;
+            list-style-position: inside;
+            li{
+                margin-top: .7rem;
+            }
+        }
+    }
+    .sessions{
+        margin: 20px 15%;
+        .sessions-date{
+            button{
+                padding: 10px 20px;
+                border-radius: 15px 15px 0px 0px;
+                border: none;
+            }
+            button.selected{
+                background-color: @color-mavi;
+                color: white;
+            }
+        }
+        .seats{
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            margin-top: 1rem;
+            position: relative;
+            span{
+                text-align: center;
+            }
+            .seat {
+                text-align: center;
+                font-size: 3rem;
+                background-color: transparent;
+                border: none;
+                .hover .empty-seat{
+                    color: @color-yesil !important;
+                }
+                .selected .empty-seat{
+                    color: @color-yesil;
+                }
+            }
+            .empty-seat{
+                color: @color-black;
+                transition: all .2s;
+            }
+            .sold-seat{
+                color: @color-mavi;
+            }
+            .seat-a{
+                position: relative;
+            }
+            .seat-a::after{
+                content: "A";
+                position: absolute;
+                font-size: 1rem;
+                left: -10px;
+                top: 15px;
+            }
+            .seat-b{
+                position: relative;
+            }
+            .seat-b::after{
+                content: "B";
+                position: absolute;
+                font-size: 1rem;
+                left: -10px;
+                top: 15px;
+            }
+            .seat-c{
+                position: relative;
+            }
+            .seat-c::after{
+                content: "C";
+                position: absolute;
+                font-size: 1rem;
+                left: -10px;
+                top: 15px;
+            }
+            .seat-d{
+                position: relative;
+            }
+            .seat-d::after{
+                content: "D";
+                position: absolute;
+                font-size: 1rem;
+                left: -10px;
+                top: 15px;
+            }
+
+            .seat-margin{
+                border-right: 2px solid black;
+            }
+
+        }
+    }
+}

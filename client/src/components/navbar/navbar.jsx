@@ -97,8 +97,8 @@ function Navbar(props){
                     </div>
                     :
                     <div className='not-logged'>
-                        <Link to="/profile" className='link login'>Giriş Yap</Link>
-                        <Link to="/profile" className='link register'>Ücretsiz Kayıt Ol</Link>
+                        <Link to="/login-register" className='link login'>Giriş Yap</Link>
+                        <Link to="/login-register" className='link register'>Ücretsiz Kayıt Ol</Link>
                     </div>
                 }
             </div>
