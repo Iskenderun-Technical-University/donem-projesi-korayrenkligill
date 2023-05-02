@@ -48,19 +48,25 @@ function LoginRegister(props) {
           position: "Kullanıcı",
           gender: gender,
           profile: profile,
-          ticket: JSON.stringify(""),
         };
-    
-        axios.post('http://localhost:3001/user/add', user)
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
         
-        navigate("/login-register");
-        window.location.reload();
+        if(!props.users.some(user => user.username === username || user.email === email)){    
+            axios.post('http://localhost:3001/user/add', user)
+            .then(response => {
+                console.log(response.data);
+            })
+            .then(()=>{
+                navigate("/login-register");
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+        else
+        {
+            setError("Bu bilgilerde bir kullanıcı bulunmakta");
+        }
       };
 
       const handleLoginSubmit = (event)=>{
@@ -114,7 +120,7 @@ function LoginRegister(props) {
                         <input type="radio" name="gender" id="women" value="kadın" onChange={handleGenderChanged}/><label htmlFor="women">Kadın</label>
                     </div>
                 </div>
-                {username.length < 1 ? <p className='error-message'>Kullanıcı adı boş bırakılamaz!</p> : password.length < 1 ? <p className='error-message'>Şifre boş bırakılamaz!</p> : name.length < 1 ? <p className='error-message'>İsim boş bırakılamaz!</p> : surname.length < 1 ? <p className='error-message'>Soyisim boş bırakılamaz!</p> : email.length < 1 ? <p className='error-message'>E-posta boş bırakılamaz!</p> : password2.length<1 ? <p className='error-message'>Şifre tekrar boş bırakılamaz!</p> : password !== password2 ? <p className='error-message'>Şifreler aynı değil!</p> : <span></span>}
+                {error.length > 0 ? <p className='error-message'>{error}</p> : username.length < 1 ? <p className='error-message'>Kullanıcı adı boş bırakılamaz!</p> : password.length < 1 ? <p className='error-message'>Şifre boş bırakılamaz!</p> : name.length < 1 ? <p className='error-message'>İsim boş bırakılamaz!</p> : surname.length < 1 ? <p className='error-message'>Soyisim boş bırakılamaz!</p> : email.length < 1 ? <p className='error-message'>E-posta boş bırakılamaz!</p> : password2.length<1 ? <p className='error-message'>Şifre tekrar boş bırakılamaz!</p> : password !== password2 ? <p className='error-message'>Şifreler aynı değil!</p> : <span></span>}
                 <button type='submit' disabled={username.length<1 || password.length < 1 || name.length < 1 || surname.length < 1 || email.length<1 || password2.length<1 || password!==password2}>Kayıt ol</button>
                 <p onClick={()=>{setTransform(0)}}>hesabım var</p>
             </form>

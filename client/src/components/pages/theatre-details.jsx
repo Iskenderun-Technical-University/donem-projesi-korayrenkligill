@@ -68,14 +68,16 @@ function TheatreDetails(props) {
             console.error(err);
             });
             
-            var price = theatre[0].price;
-            axios.post('http://localhost:3001/data/add', {price})
-            .then((res) => {
-            console.log(res.data);
-            })
-            .catch((err) => {
-            console.error(err);
-            });
+            for(var i = 0; i<seats.length; i++){
+                var price = theatre[0].price;
+                axios.post('http://localhost:3001/data/add', {price})
+                .then((res) => {
+                console.log(res.data);
+                })
+                .catch((err) => {
+                console.error(err);
+                });
+            }
 
             axios.post('http://localhost:3001/update/sessions', { id, jsonTheatre})
             .then((res) => {
