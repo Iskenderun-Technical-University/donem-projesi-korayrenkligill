@@ -11,4 +11,67 @@
     Yazdığım yazılım temsili tiyatro şirketi içinde oldukça kolaylıklar tanımakta 'admin' yetkisine sahip kullanıcıların erişebildiği yönetim paneli sayesinde şirket istatistiklerine göz atabilir, kullanıcıları listeleyerek dilediğini kaldırabilir veya düzenleyebilir ve aynı şekilde tiyatro ekleyebilir, düzenleyebilir veya kaldırabilir.
 
 # Projemde kullandığım veri tabanı ve tabloları
-    ![Tiyatroların tutulduğu mysql tablosu](/readme-images/theatres-database-table.png)
+Tiyatro gösterilerinin tutulduğu mysql tablosu
+![Tiyatroların gösterilerinin tutulduğu mysql tablosu](/readme-images/theatres-database-table.png)
+<br/><br/>
+
+Kayıtlı kullanıcıların tutulduğu mysql tablosu
+![Kayıtlı kullanıcıların tutulduğu mysql tablosu](/readme-images/users-database-table.png)
+<br/><br/>
+
+İstatistiklerin tutulduğu mysql tablosu
+![İstatistiklerin tutulduğu mysql tablosu](/readme-images/data-database-table.png)
+
+# Proje tanıtımı
+
+## Sayfalar
+Projemde temel olarak 4 ana sayfa bulunmakta bunlar sırasıyla
+
+<br/>
+
+Tiyatroların listelendiği ana sayfa
+![ana sayfa görseli](/readme-images/main-page.png)
+<br/><br/>
+
+Salon tanıtımınının yapıldığı sayfa
+![salonumuz sayfası görseli](/readme-images/place-page.png)
+
+Ayrıca bu sayfa üzerinden resimleri büyüterek daha detaylı da bakabilirsiniz
+![salonumuz sayfası görseli](/readme-images/open-image.png)
+<br/><br/>
+
+Şirket tanıtımını yapabileceğiniz hakkımızda sayfası
+![şirket tanıtım sayfası görseli](/readme-images/company-page.png)
+<br/><br/>
+
+Biletlerinizi görüntüleyebileceğiniz ve profilinizi düzenleyebileceğiniz profilim sayfası
+![profil sayfası görseli](/readme-images/profile-light.png)
+<br/><br/>
+
+Bir tiyatro gösterisine tıkladığınız durumda size detaylarını verecektir
+![tiyatro ekleme sayfası](/readme-images/theatre-detail.png)
+<br/><br/>
+
+Bir tiyatro gösterisine tıkladığınız durumda size detaylarını verecektir
+![tiyatro ekleme sayfası](/readme-images/theatre-detail.png)
+<br/><br/>
+
+<br/><br/>
+
+Ayrıca bahsettiğim üzere sadece yetkililerin görebileceği bir yönetim paneli de bulunmakta
+
+Yönetim paneline veya web sayfasında bulunmayan bir adrese gitmek isteyen kullanıcılar için 404 Hatası
+![404 sayfası](/readme-images/error.png)
+<br/><br/>
+
+Yetkili bir hesaptaysanız istatistikleri görebileceğiniz gösterge paneli
+![dashboard sayfası](/readme-images/dashboard.png)
+<br/><br/>
+
+Kullanıcı ve tiyatrolar listesi aynı zamanda düzenle butonu ile düzenleyebilir veya kaldır ile kaldırabilirsiniz bu sayfalar üzerinden
+![list sayfası](/readme-images/list.png)
+<br/><br/>
+
+Tiyatro eklemek için ise formu doldurmanız yeterlidir
+![tiyatro ekleme sayfası](/readme-images/tiyatro-ekle.png)
+<br/><br/>
