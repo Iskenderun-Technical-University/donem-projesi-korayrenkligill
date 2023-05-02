@@ -1,13 +1,10 @@
 @import './variables.less';
 
 .filter{
-    background-color: @color-mavi;
     padding: 50px 15% 50px 15%;
     .container{
         display: flex;
-        background-color: @color-white;
         border-radius: 20px;
-        box-shadow: 0px 10px 10px @color-mavi1;
         .filter-type{
             flex: 1;
             position: relative;
@@ -20,14 +17,9 @@
             cursor: pointer;
             p{
                 font-size: .8rem;
-                color: @color-grey-0;
             }
             h2{
                 font-size: 1.2rem;
-                color: @color-black;
-            }
-            .filter-icon{
-                color: @color-black;
             }
             .filter-absolute{
                 position: absolute;
@@ -35,15 +27,12 @@
                 top: 80px;
                 z-index: 50;
                 width: 100%;
-                background-color: @color-white;
                 padding: 20px;
                 border-radius: 20px;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: flex-start;
-                border: 1px solid @color-grey;
-                box-shadow: 0px 5px 10px @color-black-2;
                 .filter-item{
                     display: block;
                     padding: 5px;
@@ -52,9 +41,6 @@
                     input{
                         margin-right: .5rem;
                     }
-                }
-                .filter-item:hover{
-                    background-color: @color-grey-02;
                 }
             }
             .filter-none{
@@ -77,6 +63,60 @@
         display: none;
     }
 }
+
+.filter.light{
+    background-color: @color-mavi;
+    .container{
+        background-color: @color-white;
+        box-shadow: 0px 10px 10px @color-mavi1;
+        .filter-type{
+            p{
+                color: @color-grey-0;
+            }
+            h2{
+                color: @color-black;
+            }
+            .filter-icon{
+                color: @color-black;
+            }
+            .filter-absolute{
+                background-color: @color-white;
+                border: 1px solid @color-grey;
+                box-shadow: 0px 5px 10px @color-black-2;
+                .filter-item:hover{
+                    background-color: @color-grey-02;
+                }
+            }
+        }
+    }
+}
+.filter.dark{
+    background-color: @color-dark1;
+    .container{
+        background-color: @color-white;
+        box-shadow: 0px 10px 10px @color-dark;
+        .filter-type{
+            p{
+                color: @color-grey-0;
+            }
+            h2{
+                color: @color-black;
+            }
+            .filter-icon{
+                color: @color-black;
+            }
+            .filter-absolute{
+                background-color: @color-white;
+                border: 1px solid @color-grey;
+                box-shadow: 0px 5px 10px @color-black-2;
+                .filter-item:hover{
+                    background-color: @color-grey-02;
+                }
+            }
+        }
+    }
+}
+
 
 @media screen and (max-width: 1024px)
 {

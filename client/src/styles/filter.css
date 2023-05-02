@@ -1,12 +1,9 @@
 .filter {
-  background-color: #0099ff;
   padding: 50px 15% 50px 15%;
 }
 .filter .container {
   display: flex;
-  background-color: white;
   border-radius: 20px;
-  box-shadow: 0px 10px 10px #005a96;
 }
 .filter .container .filter-type {
   flex: 1;
@@ -21,14 +18,9 @@
 }
 .filter .container .filter-type p {
   font-size: 0.8rem;
-  color: #494949;
 }
 .filter .container .filter-type h2 {
   font-size: 1.2rem;
-  color: black;
-}
-.filter .container .filter-type .filter-icon {
-  color: black;
 }
 .filter .container .filter-type .filter-absolute {
   position: absolute;
@@ -36,15 +28,12 @@
   top: 80px;
   z-index: 50;
   width: 100%;
-  background-color: white;
   padding: 20px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  border: 1px solid #c0c0c0;
-  box-shadow: 0px 5px 10px rgba(36, 36, 36, 0.404);
 }
 .filter .container .filter-type .filter-absolute .filter-item {
   display: block;
@@ -54,9 +43,6 @@
 }
 .filter .container .filter-type .filter-absolute .filter-item input {
   margin-right: 0.5rem;
-}
-.filter .container .filter-type .filter-absolute .filter-item:hover {
-  background-color: rgba(223, 223, 223, 0.171);
 }
 .filter .container .filter-type .filter-none {
   display: none;
@@ -75,13 +61,61 @@
 .filter .all-filter-close-none {
   display: none;
 }
+.filter.light {
+  background-color: #0099ff;
+}
+.filter.light .container {
+  background-color: white;
+  box-shadow: 0px 10px 10px #005a96;
+}
+.filter.light .container .filter-type p {
+  color: #494949;
+}
+.filter.light .container .filter-type h2 {
+  color: #444444;
+}
+.filter.light .container .filter-type .filter-icon {
+  color: #444444;
+}
+.filter.light .container .filter-type .filter-absolute {
+  background-color: white;
+  border: 1px solid #c0c0c0;
+  box-shadow: 0px 5px 10px rgba(36, 36, 36, 0.404);
+}
+.filter.light .container .filter-type .filter-absolute .filter-item:hover {
+  background-color: rgba(223, 223, 223, 0.171);
+}
+.filter.dark {
+  background-color: #292929;
+}
+.filter.dark .container {
+  background-color: white;
+  box-shadow: 0px 10px 10px #1a1a1a;
+}
+.filter.dark .container .filter-type p {
+  color: #494949;
+}
+.filter.dark .container .filter-type h2 {
+  color: #444444;
+}
+.filter.dark .container .filter-type .filter-icon {
+  color: #444444;
+}
+.filter.dark .container .filter-type .filter-absolute {
+  background-color: white;
+  border: 1px solid #c0c0c0;
+  box-shadow: 0px 5px 10px rgba(36, 36, 36, 0.404);
+}
+.filter.dark .container .filter-type .filter-absolute .filter-item:hover {
+  background-color: rgba(223, 223, 223, 0.171);
+}
 @media screen and (max-width: 1024px) {
   .filter .container .filter-type p {
     font-size: 0.7rem;
   }
   .filter .container .filter-type h2 {
     font-size: 1rem;
-    color: black;
+    color: #444444;
   }
 }
 @media screen and (max-width: 768px) {
@@ -112,7 +146,7 @@
   }
   .filter .container .filter-type h2 {
     font-size: 1.2rem;
-    color: black;
+    color: #444444;
   }
   .filter .container .filter-type .filter-absolute {
     position: relative;

@@ -53,6 +53,15 @@
 .pc-navbar .right .not-logged {
   display: flex;
 }
+.pc-navbar .right .not-logged button {
+  color: white;
+  background-color: transparent;
+  padding: 0px 10px;
+  border: none;
+  font-size: 1.1rem;
+  transform: translateY(2px);
+  cursor: pointer;
+}
 .pc-navbar .right .not-logged .link {
   padding: 10px 30px;
   border-radius: 20px;
@@ -196,6 +205,12 @@
 }
 .pc-navbar .all-detail-close-none {
   display: none;
+}
+.pc-navbar.light {
+  background-color: #0099ff;
+}
+.pc-navbar.dark {
+  background-color: #292929;
 }
 .mobile-navbar {
   display: flex;

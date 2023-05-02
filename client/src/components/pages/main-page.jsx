@@ -251,8 +251,8 @@ function MainPage(props) {
         }
     });
     return (
-    <div className='main-page'>
-        <Filter selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+    <div className={props.theme ? 'main-page light' : 'main-page dark'}>
+        <Filter selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} selectedDate={selectedDate} setSelectedDate={setSelectedDate} theme={props.theme}/>
         <div className='theatres'>
             {filteredTheatres.map((theatre,key)=>{
                 const session = JSON.parse(theatre.sessions)

@@ -27,14 +27,22 @@
                 border-radius: 50px;
                 border: 1px solid @color-grey;
             }
+            .error-message{
+                color: rgb(255, 94, 94);
+                font-size: .8rem;
+            }
             button{
-                margin-top: 2rem;
+                margin-top: 1rem;
                 padding: 10px 60px;
                 background-color: @color-yesil;
                 color: @color-white;
                 border: none;
                 border-radius: 20px;
                 cursor: pointer;
+            }
+            button:disabled{
+                cursor: not-allowed;
+                background-color: @color-grey;
             }
             p{
                 margin-top: 10px;
@@ -45,6 +53,32 @@
             p:hover{
                 color: @color-black;
             }
+            .gender{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
     }
+}
+.login-register.dark{
+    .login-or-register{
+        .login,.register{
+            h2{
+                color: @color-white;
+            }
+            input{
+                color: @color-white1;
+                background-color: @color-dark1;
+                border-color: @color-dark;
+            }
+            label{
+                color: @color-white1;
+            }
+            p:hover{
+                color: @color-white;
+            }
+        }
     }
 }

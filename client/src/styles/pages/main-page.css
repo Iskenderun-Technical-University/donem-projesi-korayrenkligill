@@ -43,3 +43,9 @@
   width: 100%;
   padding: 5Ppx 20px;
 }
+.main-page.dark .theatres .theatre .theatre-name {
+  color: white;
+}
+.main-page.dark .theatres .theatre .sessions {
+  color: #eeeeee;
+}

@@ -2,7 +2,8 @@ import '../../styles/navbar/pc-navbar.css'
 import React, { useEffect, useState } from 'react'
 import Logo from '../../images/logo/Logo.png'
 import {NavLink,Link, useNavigate} from 'react-router-dom'
-import { BsBarChartFill,BsFillSunFill,BsFillDoorOpenFill,BsTicketPerforatedFill,BsHouseDoor,BsHouseDoorFill,BsGeoAlt,BsGeoAltFill,BsInfoCircle,BsInfoCircleFill,BsPerson,BsPersonFill } from "react-icons/bs";
+import { BsBarChartFill,BsFillSunFill,BsFillMoonFill,BsFillDoorOpenFill,BsTicketPerforatedFill,BsHouseDoor,BsHouseDoorFill,BsGeoAlt,BsGeoAltFill,BsInfoCircle,BsInfoCircleFill,BsPerson,BsPersonFill } from "react-icons/bs";
+import SeatConverter from '../seat-converter';
 
 function Navbar(props){
     const navigate = useNavigate();
@@ -35,11 +36,18 @@ function Navbar(props){
         window.addEventListener("resize", updateDimensions);
         return () => window.removeEventListener("resize", updateDimensions);
     }, []);
-    
-    
+
+    const handleLogout = ()=>{
+        props.setLoggedUser(null);
+        props.setIsLogged(false);
+        localStorage.setItem('loggedUser', -1);
+        navigate("/login-register");
+        window.location.reload();
+    }
+
     if(width > 768)
         return (
-        <div className='pc-navbar'>
+        <div className={props.theme ? 'pc-navbar light' : 'pc-navbar dark'}>
             <div className='left'>
                 <Link to="/" className="logo">
                     <img src={Logo} alt="" />
@@ -51,52 +59,53 @@ function Navbar(props){
             </div>
             <div className="right">
                 {
-                    props.isLogged ? 
+                    props.isLogged ?
                     <div className='logged'>
                         <div className='my-tickets' onClick={ticketDetailOpen}>
                             <BsTicketPerforatedFill/>
                             <div className={ticketDetail}>
-                                <div className='ticket'>
-                                    <div>
-                                        <h2 className='ticket-name'>Ticket Name</h2>
-                                        <p className='ticket-kn'>KN: C4</p>
+                                {props.user.ticket && JSON.parse(props.user.ticket).map((ticket,key)=>{
+                                    var theatre = props.theatres.filter(e => e.id === Number(ticket.theatreId));
+                                    if(theatre.length > 0){
+                                        return(
+                                            <div className='ticket' key={key}>
+                                                <div>
+                                                    <h2 className='ticket-name'>{theatre[0].name}</h2>
+                                                    <p className='ticket-kn'>KN: {SeatConverter(ticket.seatId)}</p>
+                                                </div>
+                                                <div>
+                                                    <p className='ticket-date'>{ticket.seatDate}, {ticket.seatTime}</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                })}
+                                {!props.user.ticket &&
+                                    <div className='ticket'>
+                                        <div>
+                                            <h2 className='ticket-name'>Herhangi bir biletiniz bulunmamakta</h2>
+                                            <p className='ticket-kn'></p>
+                                        </div>
+                                        <div>
+                                            <p className='ticket-date'></p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className='ticket-date'>0 Ock, 00:00</p>
-                                    </div>
-                                </div>
-                                <div className='ticket'>
-                                    <div>
-                                        <h2 className='ticket-name'>Ticket Name</h2>
-                                        <p className='ticket-kn'>KN: C4</p>
-                                    </div>
-                                    <div>
-                                        <p className='ticket-date'>0 Ock, 00:00</p>
-                                    </div>
-                                </div>
-                                <div className='ticket'>
-                                    <div>
-                                        <h2 className='ticket-name'>Ticket Name</h2>
-                                        <p className='ticket-kn'>KN: C4</p>
-                                    </div>
-                                    <div>
-                                        <p className='ticket-date'>0 Ock, 00:00</p>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
                         <div className='profile' onClick={profileDetailOpen}>
-                            <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="" />
+                            <img src={props.user.profile} alt="" />
                             <div className={profileDetail}>
                                 <button onClick={()=>{navigate("/profil")}}><BsPersonFill className='profile-detail-icon'/>Profile</button>
-                                <button onClick={()=>{navigate("/admin")}}><BsBarChartFill className='profile-detail-icon'/>Yönetim Paneli</button>
-                                <button><BsFillSunFill className='profile-detail-icon'/>Tema Değiştir</button>
-                                <button><BsFillDoorOpenFill className='profile-detail-icon'/>Çıkış yap</button>
+                                {props.user.position.toLocaleLowerCase() === "admin" && <button onClick={()=>{navigate("/admin")}}><BsBarChartFill className='profile-detail-icon'/>Yönetim Paneli</button>}
+                                <button onClick={()=>{props.setTheme(!props.theme)}}>{!props.theme ? <BsFillSunFill className='profile-detail-icon'/> : <BsFillMoonFill className='profile-detail-icon'/>}Tema Değiştir</button>
+                                <button onClick={handleLogout} ><BsFillDoorOpenFill className='profile-detail-icon'/>Çıkış yap</button>
                             </div>
                         </div>
                     </div>
                     :
                     <div className='not-logged'>
+                        <button onClick={()=>{props.setTheme(!props.theme)}}>{!props.theme ? <BsFillSunFill className='profile-detail-icon'/> : <BsFillMoonFill className='profile-detail-icon'/>}</button>
                         <Link to="/login-register" className='link login'>Giriş Yap</Link>
                         <Link to="/login-register" className='link register'>Ücretsiz Kayıt Ol</Link>
                     </div>

@@ -55,6 +55,15 @@
     .right{
         .not-logged{
             display: flex;
+            button{
+                color: @color-white;
+                background-color: transparent;
+                padding: 0px 10px;
+                border: none;
+                font-size: 1.1rem;
+                transform: translateY(2px);
+                cursor: pointer;
+            }
             .link{
                 padding: 10px 30px;
                 border-radius: 20px;
@@ -200,6 +209,12 @@
     .all-detail-close-none{
         display: none;
     }
+}
+.pc-navbar.light{
+    background-color: @color-mavi;
+}
+.pc-navbar.dark{
+    background-color: @color-dark1;
 }
 .mobile-navbar{
     display: flex;

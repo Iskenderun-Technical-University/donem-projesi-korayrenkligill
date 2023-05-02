@@ -3,10 +3,25 @@ import '../../../styles/pages/admin/admin-main.css'
 import '../../../styles/pages/admin/admin-userlist.css'
 import AdminSidebar from './admin-sidebar'
 import { BsThreeDotsVertical } from "react-icons/bs";
-function AdminUserList() {
-  return (
-    <div className='admin-userlist admin'>
-        <AdminSidebar/>
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+function AdminUserList(props) {
+    const navigate = useNavigate();
+    const removeUser = (userId) => {
+        axios.post('http://localhost:3001/remove/user', { id: userId })
+            .then((res) => {
+            console.log(res.data);
+            })
+            .then(()=>{
+                window.location.reload();
+            })
+            .catch((err) => {
+            console.error(err);
+            });
+    }
+    return (
+    <div className={props.theme ? 'admin-userlist admin light' : 'admin-userlist admin dark'}>
+        <AdminSidebar theme={props.theme}/>
         <div className="main">
             <h2 className='header'>KULLANICI LİSTESİ</h2>
             <p className='description'>Kayıtlı kullanıcıların listesi</p>
@@ -18,78 +33,32 @@ function AdminUserList() {
                     <div className='contact-column'>İletişim</div>
                     <div className='actions-column'>Hareketler</div>
                 </div>
-                <div className="list-item">
-                    <div className='list-column user-column'>
-                        <img src="https://randomuser.me/api/portraits/men/11.jpg" alt=""/>
-                        <span className="name-surname">Koray Renkligil</span>
-                    </div>
-                    <div className='list-column status-column'>
-                        <div className='status-color admin-color'></div>Yönetici
-                    </div>
-                    <div className='list-column gender-column'>
-                        Erkek
-                    </div>
-                    <div className='list-column contact-column'>
-                        <a href="mailto:koray.renkligill@gmail.com">koray.renkligill@gmail.com</a>
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
-                <div className="list-item">
-                    <div className='list-column user-column'>
-                        <img src="https://randomuser.me/api/portraits/men/12.jpg" alt=""/>
-                        <span className="name-surname">Mehmet İşbilen</span>
-                    </div>
-                    <div className='list-column status-column'>
-                        <div className='status-color user-color'></div>Kullanıcı
-                    </div>
-                    <div className='list-column gender-column'>
-                        Erkek
-                    </div>
-                    <div className='list-column contact-column'>
-                        <a href="mailto:koray.renkligill@gmail.com">mehmet.isbilen@gmail.com</a>
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
-                <div className="list-item">
-                    <div className='list-column user-column'>
-                        <img src="https://randomuser.me/api/portraits/women/13.jpg" alt=""/>
-                        <span className="name-surname">Beyza Akyürek</span>
-                    </div>
-                    <div className='list-column status-column'>
-                        <div className='status-color user-color'></div>Kullanıcı
-                    </div>
-                    <div className='list-column gender-column'>
-                        Kadın
-                    </div>
-                    <div className='list-column contact-column'>
-                        <a href="mailto:koray.renkligill@gmail.com">beyza_akyurek@gmail.com</a>
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
-                <div className="list-item">
-                    <div className='list-column user-column'>
-                        <img src="https://randomuser.me/api/portraits/men/14.jpg" alt=""/>
-                        <span className="name-surname">Muhammet Taşçı</span>
-                    </div>
-                    <div className='list-column status-column'>
-                        <div className='status-color user-color'></div>Kullanıcı
-                    </div>
-                    <div className='list-column gender-column'>
-                        Erkek
-                    </div>
-                    <div className='list-column contact-column'>
-                        <a href="mailto:koray.renkligill@gmail.com">muhammet_tasci@gmail.com</a>
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
+                {props.users.map((user,userKey)=>{
+                    return(
+                        <div className="list-item" key={userKey}>
+                            <div className='list-column user-column'>
+                                <img src={user.profile} alt=""/>
+                                <span className="name-surname">{user.name} {user.surname}</span>
+                            </div>
+                            <div className='list-column status-column'>
+                                {user.position.toLocaleLowerCase() === "kullanıcı" ? <div className='status-color user-color'></div> : <div className='status-color admin-color'></div>}{user.position}
+                            </div>
+                            <div className='list-column gender-column'>
+                                {user.gender}
+                            </div>
+                            <div className='list-column contact-column'>
+                                <a href={`mailto:${user.email}`}>{user.email}</a>
+                            </div>
+                            <div className='list-column actions-column'>
+                                <button className='actions-button'>Hareketler</button>
+                                <div className='user-actions'>
+                                    <button onClick={()=>{navigate(`/admin/user-list/${user.id}`)}}>Düzenle</button>
+                                    <button onClick={()=>{removeUser(user.id)}}>Kaldır</button>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     </div>

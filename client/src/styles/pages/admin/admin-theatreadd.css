@@ -123,3 +123,34 @@
   color: white;
   cursor: pointer;
 }
+.admin-theatreadd .theatre-add-form .add-theatre:disabled {
+  cursor: not-allowed;
+  background-color: #c0c0c0;
+}
+.admin-theatreadd.dark .header {
+  color: white;
+}
+.admin-theatreadd.dark .description {
+  color: #dbdbdb;
+}
+.admin-theatreadd.dark .theatre-add-form input[type="file"] {
+  color: white;
+}
+.admin-theatreadd.dark .theatre-add-form .form-item {
+  background-color: #292929;
+  border-color: #1a1a1a;
+  color: #eeeeee;
+}
+.admin-theatreadd.dark .theatre-add-form .number-input input {
+  background-color: #292929;
+  border-color: #1a1a1a;
+  color: #eeeeee;
+}
+.admin-theatreadd.dark .theatre-add-form .choose-session-panel input {
+  background-color: #292929;
+  border-color: #1a1a1a;
+  color: #eeeeee;
+}
+.admin-theatreadd.dark .theatre-add-form .sessions p {
+  color: white;
+}

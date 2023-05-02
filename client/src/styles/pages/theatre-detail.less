@@ -1,12 +1,17 @@
 @import '../variables.less';
 
 .detail-page{
-    padding: 50px 0px;
     position: relative;
     width: 100%;
+    .background-color{
+        padding: 0px 0px 0px 0px;
+        background-color: @color-mavi;
+    }
     .details{
+        transform: translateY(80px);
         display: flex;
         align-items: flex-start;
+        position: relative;
         gap: 2rem;
         margin: 0px 15%;
         .frame{
@@ -74,7 +79,7 @@
         }
     }
     .rules{
-        margin: 40px 15%;
+        margin: 140px 15% 40px 15%;
         ul{
             margin-top: 1rem;
             list-style-position: inside;
@@ -109,19 +114,23 @@
                 font-size: 3rem;
                 background-color: transparent;
                 border: none;
-                .hover .empty-seat{
-                    color: @color-yesil !important;
-                }
-                .selected .empty-seat{
-                    color: @color-yesil;
-                }
             }
             .empty-seat{
                 color: @color-black;
                 transition: all .2s;
             }
+            .empty-seat:hover{
+                color: @color-yesil;
+            }
             .sold-seat{
                 color: @color-mavi;
+            }
+            .selected-seat{
+                color: @color-yesil;
+                transition: all .2s;
+            }
+            .selected-seat:hover{
+                color: @color-black;
             }
             .seat-a{
                 position: relative;
@@ -168,6 +177,122 @@
                 border-right: 2px solid black;
             }
 
+        }
+        .selected-seats-list{
+            margin-top: 20px;
+            p{
+                color: @color-grey;
+            }
+            .list{
+                display: flex;
+                gap: 1rem;
+                margin-top: 10px;
+                color: @color-black;
+                font-weight: bold;
+            }
+        }
+        .buy-tickets{
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            button{
+                padding: 10px 60px;
+                background-color: @color-yesil;
+                border-radius: 30px;
+                border: none;
+                color: @color-white;
+            }
+        }
+    }
+    .please-login{
+        margin: 50px 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        background-color: @color-mavi;
+        padding: 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        p{
+            color: @color-white;
+            font-size: 1.1rem;
+        }
+        span{
+            color: @color-white;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.detail-page.dark{
+    .background-color{
+        background-color: @color-dark1;
+    }
+    .details{
+        .frame{
+            border-color: @color-dark2;
+        }
+    }
+    .rules{
+        h2{
+            color: @color-white;
+        }
+        ul{
+            li{
+                color: @color-white2;
+            }
+        }
+    }
+    .sessions{
+        .sessions-date{
+            button{
+                background-color: @color-dark3;
+            }
+            button.selected{
+                background-color: @color-dark;
+            }
+        }
+        .seats{
+            span{
+                color: @color-white;
+            }
+            .empty-seat{
+                color: @color-white2;
+            }
+            .selected-seat:hover{
+                color: @color-white2;
+            }
+            .seat-a::after{
+                color: @color-white;
+            }
+            .seat-b::after{
+                color: @color-white;
+            }
+            .seat-c::after{
+                color: @color-white;
+            }
+            .seat-d::after{
+                color: @color-white;
+            }
+        }
+        .selected-seats-list{
+            p{
+                color: @color-grey;
+            }
+            .list{
+                color: @color-white;
+            }
+        }
+    }
+    .please-login{
+        background-color: @color-dark1;
+        p{
+            color: @color-white;
+        }
+        span{
+            color: @color-white;
         }
     }
 }

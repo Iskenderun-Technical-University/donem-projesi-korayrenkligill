@@ -1,6 +1,4 @@
 .company .header {
-  background-color: #0099ff;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,6 +174,26 @@
 .company .our-managers .flex .texts p {
   font-size: 1.1rem;
   color: #242424;
+}
+.company.dark .header {
+  background-color: #292929;
+  color: white;
+}
+.company.dark .who-are-we .text {
+  color: white;
+}
+.company.dark .aim {
+  background-color: #292929;
+  box-shadow: 0px 10px 20px #1a1a1a;
+}
+.company.dark .aim ul li {
+  background-color: #1a1a1a;
+}
+.company.dark .our-managers {
+  color: white;
+}
+.company.dark .our-managers .flex .texts p {
+  color: #dbdbdb;
 }
 @media screen and (max-width: 1440px) {
   .company .who-are-we {

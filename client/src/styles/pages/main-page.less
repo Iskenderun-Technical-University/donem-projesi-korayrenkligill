@@ -1,22 +1,12 @@
 @import '../variables.less';
 
 .main-page{
-    // .deneme{
-        //     background-image: url('../../images/wave.svg');
-        //     background-position: top;
-        //     background-repeat: no-repeat;
-        //     height: 1400px;
-    // }
     .theatres{
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(250px,0fr));
         gap: 20px;
         padding: 20px 15%;
         position: relative;
-        // background-image: url('../../images/wave.svg');
-        // background-position: top;
-        // background-repeat: no-repeat;
-        // background-size: auto;
         width: 100%;
         .header-wave{
             position: absolute;
@@ -53,6 +43,19 @@
                 justify-content: space-between;
                 width: 100%;
                 padding: 5Ppx 20px;
+            }
+        }
+    }
+}
+
+.main-page.dark{
+    .theatres{
+        .theatre{
+            .theatre-name{
+                color: @color-white;
+            }
+            .sessions{
+                color: @color-white1;
             }
         }
     }

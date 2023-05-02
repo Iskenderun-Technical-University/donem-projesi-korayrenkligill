@@ -15,38 +15,110 @@ import AdminTheatreAdd from './components/pages/admin/admin-theatreadd'
 import TheatreDetails from './components/pages/theatre-details'
 import axios from 'axios'
 import LoginRegister from './components/pages/login-register'
+import {ClipLoader,RotateLoader} from 'react-spinners'
+import AdminUserDetail from './components/pages/admin/admin-user-detail'
+import AdminTheatreDetail from './components/pages/admin/admin-theatre-detail'
 function App() {
   const [theatres, setTheatres] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [data, setData] = useState([]);
+
+  const [loggedUser, setLoggedUser] = useState(null);
+  const [isLogged, setIsLogged] = useState(false);
+  const [localUserId, setLocalUserId] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+
+  const [theme,setTheme] = useState(localStorage.getItem('theme') === "true");
+
+  const changeTheme = (choosedTheme)=>{
+    setTheme(choosedTheme);
+    localStorage.setItem('theme',choosedTheme);
+  }
+
 
     useEffect(() => {
+      
       axios
-        .get("http://localhost:3001/theatres")
-        .then((response) => {
-          setTheatres(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      .get("http://localhost:3001/theatres")
+      .then((response) => {
+        setTheatres(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      
+      axios
+      .get("http://localhost:3001/data")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      
+      axios
+      .get("http://localhost:3001/users")
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .then(setLocalUser)
+      .then(()=>{
+        setTimeout(()=>{
+          setLoading(false);
+        },1000)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     }, []);
+    const setLocalUser = ()=>{
+      if(users && localStorage.getItem('loggedUser'))
+        setLocalUserId(localStorage.getItem('loggedUser'))
+    }
+    useEffect(() => {
+      if(localUserId && localUserId >= 0){
+        setIsLogged(true);
+        setLoggedUser(users[localUserId-1]);
+      }
+    }, [localUserId]);
   return (
     <div className='app'>
-      <div>
-        <Navbar isLogged={true}/>
-        <Routes>
-          <Route path='/' element={<MainPage theatres={theatres}/>}/>
-          <Route path='/hakkımızda' element={<Company/>}/>
-          <Route path='/salonumuz' element={<Place/>}/>
-          <Route path='/profil' element={<Profile/>}/>
-          <Route path='/admin' element={<AdminDashboard/>}/>
-          <Route path='/admin/user-list' element={<AdminUserList/>}/>
-          <Route path='/admin/theatre-list' element={<AdminTheatreList/>}/>
-          <Route path='/admin/theatre-add' element={<AdminTheatreAdd/>}/>
-          <Route path='/theatre/detail/:id' element={<TheatreDetails theatres={theatres}/>}/>
-          <Route path='/login-register' element={<LoginRegister/>}/>
-          <Route path='/*' element={<ErrorPage/>}/>
-        </Routes>
-      </div>
-      <Footer/>
+      {
+        loading ? 
+        <div className='loading'>
+          <RotateLoader
+          color='#0099ff'
+          loading={loading}
+          // cssOverride={override}
+          size={20}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          />
+        </div>
+        :
+        <div className={theme ? 'main-container light' : 'main-container dark'}>
+          <div>
+            <Navbar isLogged={isLogged} user={loggedUser} setIsLogged={setIsLogged} setLoggedUser={setLoggedUser} theatres={theatres} theme={theme} setTheme={changeTheme} />
+            <Routes>
+              <Route path='/' element={<MainPage theatres={theatres} theme={theme}/>}/>
+              <Route path='/hakkımızda' element={<Company theme={theme}/>}/>
+              <Route path='/salonumuz' element={<Place theme={theme}/>}/>
+              {isLogged && <Route path='/profil' element={<Profile user={loggedUser} users={users} theatres={theatres} theme={theme}/>}/>}
+              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin' element={<AdminDashboard users={users} data={data} theme={theme}/>}/>}
+              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/user-list' element={<AdminUserList users={users} theme={theme}/>}/>}
+              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/user-list/:id' element={<AdminUserDetail users={users} theme={theme}/>}/>}
+              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-list' element={<AdminTheatreList theatres={theatres} theme={theme}/>}/>}
+              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-list/:id' element={<AdminTheatreDetail theatres={theatres} theme={theme}/>}/>}
+              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-add' element={<AdminTheatreAdd theme={theme}/>}/>}
+              <Route path='/theatre/detail/:id' element={<TheatreDetails theatres={theatres} user={loggedUser} setUser={setLoggedUser} theme={theme}/>}/>
+              {!isLogged && <Route path='/login-register' element={<LoginRegister users={users} isLogged={isLogged} setIsLogged={setIsLogged} setLoggedUser={setLoggedUser} theme={theme}/>}/>}
+              <Route path='/*' element={<ErrorPage theme={theme}/>}/>
+            </Routes>
+          </div>
+          <Footer theme={theme}/>
+        </div>
+      }
     </div>
   )
 }

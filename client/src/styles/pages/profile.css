@@ -14,12 +14,22 @@
 }
 .profile .profile-notchange .profile-frame img {
   border-radius: 500px;
+  max-width: 150px;
 }
 .profile .profile-notchange .texts h2 {
   color: #444444;
 }
 .profile .profile-notchange .texts p {
   color: #494949;
+}
+.profile .profile-notchange .texts p span {
+  color: #c0c0c0;
+  margin-right: 5px;
+  font-size: 0.8rem;
+}
+.profile .profile-notchange .texts p span .icon {
+  transform: translateY(2px) scale(1.2);
+  margin-right: 5px;
 }
 .profile .profile-notchange .buttons {
   position: absolute;
@@ -63,14 +73,39 @@
   color: #444444;
 }
 .profile .profile-change .profile-frame img {
+  max-width: 150px;
   border-radius: 500px;
 }
+.profile .profile-change .texts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: 20px;
+}
 .profile .profile-change .texts .name {
-  font-size: 1rem;
   margin-right: 10px;
 }
-.profile .profile-change .texts .surname {
-  font-size: 1rem;
+.profile .profile-change .texts .password {
+  margin-right: 10px;
+}
+.profile .profile-change .texts input {
+  padding: 7px;
+  border-radius: 20px;
+  border: 1px solid #c0c0c0;
+  font-size: 0.9rem;
+}
+.profile .profile-change .texts .passwords {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.profile .profile-change .texts .passwords input[type="checkbox"] {
+  transform: translateY(2px);
+  margin-right: 5px;
+}
+.profile .profile-change .texts .passwords label {
+  font-size: 0.8rem;
 }
 .profile .profile-change .buttons {
   position: absolute;
@@ -143,4 +178,45 @@
   display: flex;
   align-items: center;
   margin-right: 20px;
+}
+.profile.dark .profile-notchange {
+  background-color: #292929;
+}
+.profile.dark .profile-notchange .texts h2 {
+  color: white;
+}
+.profile.dark .profile-notchange .texts p {
+  color: white;
+}
+.profile.dark .profile-notchange .buttons button {
+  color: white;
+}
+.profile.dark .profile-change {
+  background-color: #292929;
+}
+.profile.dark .profile-change .profile-frame label:hover {
+  color: white;
+}
+.profile.dark .profile-change .texts input {
+  background-color: #1a1a1a;
+  border: #1a1a1a;
+  color: #eeeeee;
+}
+.profile.dark .profile-change .texts label {
+  color: white;
+}
+.profile.dark .profile-change .buttons button {
+  color: white;
+}
+.profile.dark .tickets .ticket {
+  background-color: #292929;
+}
+.profile.dark .tickets .ticket .left .ticket-texts h2 {
+  color: white;
+}
+.profile.dark .tickets .ticket .left .ticket-texts p {
+  color: #dbdbdb;
+}
+.profile.dark .tickets .ticket .koltuk-numarasi p {
+  color: white;
 }

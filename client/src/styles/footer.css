@@ -31,6 +31,12 @@
   display: flex;
   gap: 10px;
 }
+.footer.light {
+  background-color: #0099ff;
+}
+.footer.dark {
+  background-color: #292929;
+}
 @media screen and (max-width: 768px) {
   .footer {
     padding: 40px 5%;

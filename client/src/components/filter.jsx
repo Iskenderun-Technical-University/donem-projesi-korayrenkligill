@@ -60,7 +60,7 @@ function Filter(props) {
         setAllCloseClass("all-filter-close-none");
     }
     return (
-    <div className='filter'>
+    <div className={props.theme ? 'filter light' : 'filter dark'}>
         <div className="container">
             <div className='filter-type' onClick={openCategoryFilter}>
                 <div className='filter-name'>

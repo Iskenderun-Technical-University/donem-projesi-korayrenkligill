@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/pages/company.css'
 import Footer from '../footer';
-function Company() {
+function Company(props) {
     const [width, setWidth]   = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
     const updateDimensions = () => {
@@ -73,7 +73,7 @@ function Company() {
         }
     }
     return (
-    <div className='company'>
+    <div className={props.theme ? 'company light' : 'company dark'}>
         <div className='header'>
             <h2>Hakkımızda</h2>
         </div>

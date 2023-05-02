@@ -70,8 +70,9 @@
 }
 .admin-theatrelist .list .list-item .actions-column {
   flex: 1;
+  position: relative;
 }
-.admin-theatrelist .list .list-item .actions-column button {
+.admin-theatrelist .list .list-item .actions-column .action-button {
   width: 80%;
   padding: 10px 0px;
   background-color: #0099ff;
@@ -79,6 +80,46 @@
   border: none;
   border-radius: 50px;
 }
+.admin-theatrelist .list .list-item .actions-column .theatre-actions {
+  display: none;
+}
+.admin-theatrelist .list .list-item .actions-column:hover .theatre-actions {
+  position: absolute;
+  z-index: 10;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.admin-theatrelist .list .list-item .actions-column:hover .theatre-actions button {
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+.admin-theatrelist .list .list-item .actions-column:hover .theatre-actions button:nth-child(1):hover {
+  background-color: #00d6a4;
+  color: white;
+}
+.admin-theatrelist .list .list-item .actions-column:hover .theatre-actions button:nth-child(2):hover {
+  background-color: #fa5252;
+  color: white;
+}
 .admin-theatrelist .list .list-item:nth-child(even) {
   background-color: white;
+}
+.admin-theatrelist.dark .header {
+  color: white;
+}
+.admin-theatrelist.dark .description {
+  color: #dbdbdb;
+}
+.admin-theatrelist.dark .list .list-header {
+  color: white;
+}
+.admin-theatrelist.dark .list .list-item {
+  color: white;
+}
+.admin-theatrelist.dark .list .list-item:nth-child(even) {
+  background-color: #353535;
 }

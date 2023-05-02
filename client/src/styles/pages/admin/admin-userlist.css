@@ -81,8 +81,9 @@
 }
 .admin-userlist .list .list-item .actions-column {
   flex: 1;
+  position: relative;
 }
-.admin-userlist .list .list-item .actions-column button {
+.admin-userlist .list .list-item .actions-column .actions-button {
   width: 80%;
   padding: 10px 0px;
   background-color: #0099ff;
@@ -90,6 +91,46 @@
   border: none;
   border-radius: 50px;
 }
+.admin-userlist .list .list-item .actions-column .user-actions {
+  display: none;
+}
+.admin-userlist .list .list-item .actions-column:hover .user-actions {
+  position: absolute;
+  z-index: 10;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.admin-userlist .list .list-item .actions-column:hover .user-actions button {
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+.admin-userlist .list .list-item .actions-column:hover .user-actions button:nth-child(1):hover {
+  background-color: #00d6a4;
+  color: white;
+}
+.admin-userlist .list .list-item .actions-column:hover .user-actions button:nth-child(2):hover {
+  background-color: #fa5252;
+  color: white;
+}
 .admin-userlist .list .list-item:nth-child(even) {
   background-color: white;
+}
+.admin-userlist.dark .header {
+  color: white;
+}
+.admin-userlist.dark .description {
+  color: #dbdbdb;
+}
+.admin-userlist.dark .list .list-header {
+  color: white;
+}
+.admin-userlist.dark .list .list-item {
+  color: white;
+}
+.admin-userlist.dark .list .list-item:nth-child(even) {
+  background-color: #353535;
 }

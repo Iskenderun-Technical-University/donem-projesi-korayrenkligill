@@ -1,9 +1,9 @@
 import React from 'react'
 import '../../styles/pages/place.css'
 import GaleryImage from '../galery-image'
-function Place() {
+function Place(props) {
   return (
-    <div className='place'>
+    <div className={props.theme ? 'place light' : 'place dark'}>
         <div className='header'>
             <h2>Salonumuz</h2>
         </div>

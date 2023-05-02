@@ -35,3 +35,22 @@
   font-size: 1.5rem;
   color: #444444;
 }
+.admin-dashboard.dark .header {
+  color: white;
+}
+.admin-dashboard.dark .description {
+  color: #dbdbdb;
+}
+.admin-dashboard.dark .dashboard-grid .dashboard-grid-item {
+  background-color: #292929;
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.068);
+}
+.admin-dashboard.dark .dashboard-grid .dashboard-grid-item h2 {
+  color: white;
+}
+.admin-dashboard.dark .dashboard-grid .dashboard-grid-item p {
+  color: #c0c0c0;
+}
+.admin-dashboard.dark .dashboard-grid .dashboard-grid-item .dashboard-icon {
+  color: white;
+}

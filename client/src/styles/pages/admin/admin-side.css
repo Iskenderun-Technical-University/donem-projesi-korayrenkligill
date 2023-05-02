@@ -18,3 +18,12 @@
 .sidebar-main ul li a:hover {
   background-color: #fbfbfb;
 }
+.sidebar-main.dark p {
+  color: #b4b4b4;
+}
+.sidebar-main.dark ul li a {
+  color: white;
+}
+.sidebar-main.dark ul li a:hover {
+  background-color: #2e2e2e;
+}

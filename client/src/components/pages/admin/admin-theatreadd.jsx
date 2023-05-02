@@ -5,7 +5,7 @@ import AdminSidebar from './admin-sidebar'
 import axios from 'axios';
 import { BsFileEarmarkPlus,BsPlus } from "react-icons/bs";
 
-function AdminTheatreAdd() {
+function AdminTheatreAdd(props) {
   const date = new Date();
   let nowDate;
   if(date.getMonth() > 8 && date.getDate() > 8)
@@ -36,7 +36,7 @@ function AdminTheatreAdd() {
   let nowSession = {
     date: "",
     time: "",
-    seats: [0,0,0,0,0,0,0,0,0,0]
+    seats: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
   }
 
   const handleFileChange = (event) => {
@@ -91,13 +91,16 @@ function AdminTheatreAdd() {
       .then(response => {
         console.log(response.data);
       })
+      .then(()=>{
+        window.location.reload();
+      })
       .catch(error => {
         console.log(error);
       });
   };
   return (
-    <div className='admin-theatreadd admin'>
-        <AdminSidebar/>
+    <div className={props.theme ? 'admin-theatreadd admin light' : 'admin-theatreadd admin dark'}>
+        <AdminSidebar theme={props.theme}/>
         <form className="main" onSubmit={handleSubmit}>
           <h2 className='header'>TİYATRO EKLE</h2>
           <p className='description'>Yeni gösteriler ekle</p>
@@ -115,7 +118,7 @@ function AdminTheatreAdd() {
             {/* <div className='choosed-image'>
               <img src="" alt="" />
             </div> */}
-            <input className='form-item theatre-name' type="text" placeholder='Tiyatro adını giriniz..'  minLength="1" maxLength="50" value={name} onChange={e => setName(e.target.value)}/>
+            <input className='form-item theatre-name' type="text" placeholder='Tiyatro adını giriniz..'  minlength="4" maxLength="50" value={name} onChange={e => setName(e.target.value)}/>
             <textarea className='form-item theatre-description' type="text" rows="5"  placeholder='Tiyatro açıklaması giriniz..'  minLength="1" maxLength="200" value={trailer} onChange={e => setTrailer(e.target.value)}></textarea>
             <div className='number-input'>
               <label htmlFor="price">Fiyat:</label>
@@ -124,7 +127,7 @@ function AdminTheatreAdd() {
             <input className='form-item theatre-name' type="text" placeholder='Oyuncu kadrosu.. (oyuncu1,oyuncu2..)'  minLength="1" maxLength="50" value={cast} onChange={e => setCast(e.target.value.split(','))}/>
             <div className='number-input'>
               <label htmlFor="time">Gösterim süresi:</label>
-              <input className='theatre-price' id='time' type="number" min="0" placeholder='Gösteri süresi giriniz..' value={time} onChange={e => setTime(parseInt(e.target.value))}/>
+              <input className='theatre-price' id='time' type="number" min="10" placeholder='Gösteri süresi giriniz..' value={time} onChange={e => setTime(parseInt(e.target.value))}/>
             </div>
             <input className='form-item theatre-name' type="text" placeholder='Kategoriler... (dram,komedi..)'  minLength="1" maxLength="50" value={categories} onChange={e => setCategories(e.target.value.split(','))}/>
             <div className='choose-session-panel'>
@@ -143,7 +146,10 @@ function AdminTheatreAdd() {
                 <p key={index}>Seans: {item.date} - {item.time}</p>
               )})}
             </div>
-            <button type="submit" className='add-theatre'>Tiyatroyu Ekle</button>
+            {!image ? <p className='error-message'>Tiyatro resmi seçmelisin !</p> : name.length < 1 ? <p className='error-message'>Tiyatro adı çok kısa !</p> : trailer.length < 1 ? <p className='error-message'>Tiyatro açıklaması çok kısa !</p> : 
+            cast.length < 1 ? <p className='error-message'>En az bir oyuncu adı girmelisin !</p> : categories.length < 1 ? <p className='error-message'>En az bir kategori girmelisin !</p> :
+            sessionList.length < 1 ? <p className='error-message'>En az bir seans girmelisin !</p> : <span></span>}
+            <button type="submit" disabled={!image || name.length < 1 || trailer.length < 1 || cast.length < 1 || time < 10 || categories.length < 1 || sessionList.length < 1} className='add-theatre'>Tiyatroyu Ekle</button>
             <div className='margin-bottom'></div>
           </div>
         </form>

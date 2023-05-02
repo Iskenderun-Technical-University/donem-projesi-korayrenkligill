@@ -2,9 +2,9 @@ import React from 'react'
 import '../../../styles/pages/admin/admin-side.css'
 import { Link } from 'react-router-dom'
 
-function AdminSidebar() {
+function AdminSidebar(props) {
   return (
-    <div className='sidebar-main'>
+    <div className={props.theme ? 'sidebar-main light' : 'sidebar-main dark'}>
         <p>Bilgilendirme</p>
         <ul>
             <li>

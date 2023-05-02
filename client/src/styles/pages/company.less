@@ -2,8 +2,6 @@
 
 .company{
     .header{
-        background-color: @color-mavi;
-        color: @color-white;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -182,6 +180,36 @@
                 p{
                     font-size: 1.1rem;
                     color: @color-black-1;
+                }
+            }
+        }
+    }
+}
+.company.dark{
+    .header{
+        background-color: @color-dark1;
+        color: @color-white;
+    }
+    .who-are-we{
+        .text{
+            color: @color-white;
+        }
+    }
+    .aim{
+        background-color: @color-dark1;
+        box-shadow: 0px 10px 20px @color-dark;
+        ul{
+            li{
+                background-color: @color-dark;
+            }
+        }
+    }
+    .our-managers{
+        color: @color-white;
+        .flex{
+            .texts{
+                p{
+                    color: @color-white2;
                 }
             }
         }

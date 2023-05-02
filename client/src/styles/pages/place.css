@@ -10,10 +10,6 @@
   min-height: 300px;
   font-size: 3rem;
 }
-.place .header-svg-container {
-  position: relative;
-  min-height: 1px;
-}
 .place .headertag {
   text-align: center;
   font-size: 2rem;
@@ -84,10 +80,11 @@
   margin-bottom: 30px;
 }
 .place .address p {
-  color: white;
+  color: #444444;
   text-align: center;
   margin-top: 30px;
   font-size: 1.6rem;
+  margin-bottom: 2rem;
 }
 .place .header-wave {
   position: absolute;
@@ -102,6 +99,18 @@
   bottom: 0px;
   width: 100%;
   z-index: -1;
+}
+.place.dark .header {
+  background-color: #292929;
+}
+.place.dark .headertag {
+  color: white;
+}
+.place.dark .address h2 {
+  color: white;
+}
+.place.dark .address p {
+  color: #eeeeee;
 }
 @media screen and (max-width: 1024px) {
   .place .address iframe {

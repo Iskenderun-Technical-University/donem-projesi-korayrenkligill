@@ -90,7 +90,8 @@
             }
             .actions-column{
                 flex: @actions-column-flex;
-                button{
+                position: relative;
+                .actions-button{
                     width: 80%;
                     padding: 10px 0px;
                     background-color: @color-mavi;
@@ -98,10 +99,56 @@
                     border: none;
                     border-radius: 50px;
                 }
+                .user-actions{
+                    display: none;
+                }
+            }
+            .actions-column:hover{
+                .user-actions{
+                    position: absolute;
+                    z-index: 10;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    button{
+                        padding: 5px;
+                        border: none;
+                        cursor: pointer;
+                    }
+                    button:nth-child(1):hover{
+                        background-color: @color-yesil;
+                        color: @color-white;
+                    }
+                    button:nth-child(2):hover{
+                        background-color: @color-kirmizi;
+                        color: @color-white;
+                    }
+                }
             }
         }
         .list-item:nth-child(even){
             background-color: @color-white;
+        }
+    }
+}
+.admin-userlist.dark{
+    .header{
+        color: @color-white;
+    }
+    .description{
+        color: @color-white2;
+    }
+    .list{
+        .list-header{
+            color: @color-white;
+        }
+        .list-item{
+            color: @color-white;
+        }
+        .list-item:nth-child(even){
+            background-color: @color-dark2;
         }
     }
 }

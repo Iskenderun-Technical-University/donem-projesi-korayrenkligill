@@ -2,11 +2,26 @@ import React from 'react'
 import '../../../styles/pages/admin/admin-main.css'
 import '../../../styles/pages/admin/admin-theatrelist.css'
 import AdminSidebar from './admin-sidebar'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
-function AdminTheatreList() {
+function AdminTheatreList(props) {
+  const navigate = useNavigate();
+  const removeTheatre = (theatreId) => {
+    axios.post('http://localhost:3001/remove/theatre', { id: theatreId })
+        .then((res) => {
+        console.log(res.data);
+        })
+        .then(()=>{
+            window.location.reload();
+        })
+        .catch((err) => {
+        console.error(err);
+        });
+}
   return (
-    <div className='admin-theatrelist admin'>
-        <AdminSidebar/>
+    <div className={props.theme ? 'admin-theatrelist admin light' : 'admin-theatrelist admin dark'}>
+        <AdminSidebar theme={props.theme}/>
         <div className="main">
           <h2 className='header'>TİYATRO LİSTESİ</h2>
           <p className='description'>Gösterilerin listesi</p>
@@ -18,74 +33,31 @@ function AdminTheatreList() {
                     <div className='price-column'>Fiyatı</div>
                     <div className='actions-column'>Hareketler</div>
                 </div>
-                <div className="list-item">
-                    <div className='list-column image-column'>
-                        <img src="https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg" alt=""/>
+                {props.theatres.map((theatre,theatreKey)=>{
+                  return(
+                    <div className="list-item" key={theatreKey}>
+                      <div className='list-column image-column'>
+                        <img src={theatre.image} alt=""/>
+                      </div>
+                      <div className='list-column name-column'>
+                        <span className="name">{theatre.name}</span>
+                      </div>
+                      <div className='list-column description-column'>
+                        {theatre.trailer}
+                      </div>
+                      <div className='list-column price-column'>
+                          {theatre.price}₺
+                      </div>
+                      <div className='list-column actions-column'>
+                        <button className='action-button'>Hareketler</button>
+                        <div className='theatre-actions'>
+                          <button onClick={()=>{navigate(`/admin/theatre-list/${theatre.id}`)}}>Düzenle</button>
+                          <button onClick={()=>{removeTheatre(theatre.id)}}>Kaldır</button>
+                        </div>
+                      </div>
                     </div>
-                    <div className='list-column name-column'>
-                      <span className="name">Gökhan Ünver : Çok Tanıdık</span>
-                    </div>
-                    <div className='list-column description-column'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro dolores magni tempore esse dignissimos accusantium reprehenderit nulla pariatur cum.
-                    </div>
-                    <div className='list-column price-column'>
-                        200₺
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
-                <div className="list-item">
-                    <div className='list-column image-column'>
-                        <img src="https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg" alt=""/>
-                    </div>
-                    <div className='list-column name-column'>
-                      <span className="name">Gökhan Ünver : Çok Tanıdık</span>
-                    </div>
-                    <div className='list-column description-column'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro dolores magni tempore esse dignissimos accusantium reprehenderit nulla pariatur cum.
-                    </div>
-                    <div className='list-column price-column'>
-                        200₺
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
-                <div className="list-item">
-                    <div className='list-column image-column'>
-                        <img src="https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg" alt=""/>
-                    </div>
-                    <div className='list-column name-column'>
-                      <span className="name">Gökhan Ünver : Çok Tanıdık</span>
-                    </div>
-                    <div className='list-column description-column'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro dolores magni tempore esse dignissimos accusantium reprehenderit nulla pariatur cum.
-                    </div>
-                    <div className='list-column price-column'>
-                        200₺
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
-                <div className="list-item">
-                    <div className='list-column image-column'>
-                        <img src="https://kdaidggt0f3v.merlincdn.net/Uploads/Films/gokhan-unver-stand-up-202331515557.jpg" alt=""/>
-                    </div>
-                    <div className='list-column name-column'>
-                      <span className="name">Gökhan Ünver : Çok Tanıdık</span>
-                    </div>
-                    <div className='list-column description-column'>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim porro dolores magni tempore esse dignissimos accusantium reprehenderit nulla pariatur cum.
-                    </div>
-                    <div className='list-column price-column'>
-                        200₺
-                    </div>
-                    <div className='list-column actions-column'>
-                        <button>Hareketler</button>
-                    </div>
-                </div>
+                  )
+                })}
             </div>
         </div>
     </div>
