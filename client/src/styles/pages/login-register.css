@@ -92,7 +92,7 @@
   color: white;
 }
 @media screen and (max-width: 900px) {
-  .frame {
+  .login-register .frame {
     display: none;
   }
 }
