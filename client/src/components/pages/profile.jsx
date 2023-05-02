@@ -29,7 +29,7 @@ function dateControl(ticketDate){
 function Profile(props) {
   return (
     <div className={props.theme ? 'profile light' : 'profile dark'}>
-      <ProfileSettings user={props.user} />
+      <ProfileSettings user={props.user} setIsLogged={props.setIsLogged} setLoggedUser={props.setLoggedUser} />
       <div className='tickets'>
         {props.user.ticket && JSON.parse(props.user.ticket).map((ticket,key)=>{
             var theatre = props.theatres.filter(e => e.id === Number(ticket.theatreId));

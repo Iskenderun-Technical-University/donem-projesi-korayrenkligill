@@ -31,6 +31,17 @@
   transform: translateY(2px) scale(1.2);
   margin-right: 5px;
 }
+.profile .profile-notchange .texts .logout {
+  color: #0099ff;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.profile .profile-notchange .texts .logout:hover {
+  color: #444444;
+}
 .profile .profile-notchange .buttons {
   position: absolute;
   right: 1rem;
@@ -219,4 +230,71 @@
 }
 .profile.dark .tickets .ticket .koltuk-numarasi p {
   color: white;
+}
+@media screen and (max-width: 1160px) {
+  .profile {
+    margin: 0px 10%;
+  }
+}
+@media screen and (max-width: 880px) {
+  .profile {
+    margin: 0px 0%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .profile .profile-change {
+    flex-direction: column;
+  }
+  .profile .profile-change .texts {
+    margin: 0px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .profile .profile-change .texts {
+    width: 80%;
+  }
+  .profile .profile-change .texts div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .profile .profile-change .texts div .name {
+    margin: 0px;
+  }
+  .profile .profile-change .texts .passwords {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .profile .profile-change .texts .passwords div:nth-child(1) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .profile .profile-change .texts .passwords div:nth-child(1) .password {
+    margin: 0px;
+  }
+  .profile .profile-change .texts .passwords div:nth-child(2) {
+    display: block;
+  }
+  .profile .profile-notchange {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 400px) {
+  .profile .profile-change {
+    padding: 10px;
+  }
+  .profile .profile-change .texts {
+    width: 100%;
+  }
+  .profile .profile-change .texts .passwords div:nth-child(2) {
+    margin-bottom: 30px;
+  }
+  .profile .profile-notchange {
+    flex-direction: column;
+    text-align: center;
+  }
 }

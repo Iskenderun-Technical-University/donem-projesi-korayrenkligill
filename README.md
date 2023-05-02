@@ -24,6 +24,15 @@ Kayıtlı kullanıcıların tutulduğu mysql tablosu
 
 # Proje tanıtımı
 
+## Özellikler
+* Beyaz ve Siyah olmak üzere 2 ayrı tema seçeneği
+    * Aşağıda gösterilecek olan resimlerin çoğu da bu sebeple 2 ye bölünmüştür
+* Responsive tasarım. Mobil, tablet ve bilgisayarlara ayrı ayrı render edilerek uyumlu bir internet sayfası görmenize yardımcı olur
+* Yerel kayıt. Giriş yapılı bulunduğunuz hesap, seçtiğiniz tema gibi özellikleri yerel olarak kaydederek her sayfa yenilemenizde tekrar giriş yapma veya tema değiştirme durumunu engeller
+* Bileşenlerine ayrılmış bir sayfa. React components sayesinde sayfadaki hareketleriniz esnasında tüm sayfayı yeniden yüklemek yerine yalnızca gerekli alanları yeniler bu sayede sayfa içerisinde yüksek hızlarda dolaşabilirsiniz.
+* Kullanıcı dostu. Sayfa üzerinde kullanıcılara kolaylıklar sağlaması için bir çok element bulunmakta bunlardan bir kaçı, navigation bar üzerinde bilet listesi, tiyatro listesi için filtreleme seçeneği, yönetim paneli için sütunlara ayrıştırılmış tablolar
+
+
 ## Sayfalar
 Projemde temel olarak 4 ana sayfa bulunmakta bunlar sırasıyla
 
@@ -52,8 +61,8 @@ Bir tiyatro gösterisine tıkladığınız durumda size detaylarını verecektir
 ![tiyatro ekleme sayfası](/readme-images/theatre-detail.png)
 <br/><br/>
 
-Bir tiyatro gösterisine tıkladığınız durumda size detaylarını verecektir
-![tiyatro ekleme sayfası](/readme-images/theatre-detail.png)
+Dilerseniz biraz aşağı kaydırarak giriş yapılı hesabınız için bir bilette alabilirsiniz
+![tiyatro ekleme sayfası](/readme-images/theatre-seats.png)
 <br/><br/>
 
 <br/><br/>

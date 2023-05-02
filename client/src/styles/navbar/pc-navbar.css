@@ -226,6 +226,10 @@
   left: 0px;
   width: 100%;
 }
+.mobile-navbar button.link {
+  background-color: transparent;
+  border: none;
+}
 .mobile-navbar .link {
   flex: 1;
   display: flex;
@@ -237,6 +241,15 @@
   font-size: 1.5rem;
   text-decoration: none;
   color: #c0c0c0;
+}
+.mobile-navbar .link .frame {
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.mobile-navbar .link .frame img {
+  border-radius: 100px;
+  max-height: 40px;
 }
 .mobile-navbar .link .fill {
   display: none;
@@ -263,6 +276,13 @@
 }
 .mobile-navbar .link:not(:last-child) {
   border-right: 1px solid rgba(128, 128, 128, 0.171);
+}
+.mobile-navbar.dark {
+  background-color: #292929;
+  box-shadow: 0px 5px 15px #1a1a1a;
+}
+.mobile-navbar.dark .link.active {
+  color: white;
 }
 @media screen and (max-width: 1440px) {
   .pc-navbar {

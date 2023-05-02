@@ -5,12 +5,16 @@
   margin-top: 50px;
   overflow: hidden;
 }
+.login-register .frame img {
+  width: 100%;
+}
 .login-register .login-or-register {
   display: flex;
   width: 263px;
   overflow: hidden;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 50px;
 }
 .login-register .login-or-register .login,
 .login-register .login-or-register .register {
@@ -86,4 +90,9 @@
 .login-register.dark .login-or-register .login p:hover,
 .login-register.dark .login-or-register .register p:hover {
   color: white;
+}
+@media screen and (max-width: 900px) {
+  .frame {
+    display: none;
+  }
 }

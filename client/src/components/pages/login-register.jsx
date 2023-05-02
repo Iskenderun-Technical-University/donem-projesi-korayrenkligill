@@ -81,7 +81,9 @@ function LoginRegister(props) {
     }
     return (
     <div className={props.theme ? 'login-register light' : 'login-register dark'}>
-        <img src={loginImage} alt=""/>
+        <div className='frame'>
+            <img src={loginImage} alt=""/>
+        </div>
         <div className='login-or-register'>
             <form onSubmit={handleLoginSubmit} action="" className='login' style={backgroudItem}>
                 <h2>Giriş Yap</h2>

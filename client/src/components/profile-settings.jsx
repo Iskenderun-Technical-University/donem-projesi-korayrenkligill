@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BsPencilSquare,BsXLg,BsCheck2,BsFillPersonVcardFill } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
+import { useNavigate } from 'react-router-dom';
 
 
 function capitalize(str) {
@@ -9,6 +10,7 @@ function capitalize(str) {
 }
 
 function ProfileSettings(props) {
+    const navigate = useNavigate();
     const [settings,setSettings] = useState(false);
     
     const [unapprovedImage,setUnapprovedImage] = useState(null)
@@ -67,6 +69,13 @@ function ProfileSettings(props) {
               });
         }
     };
+    const handleLogout = ()=>{
+        props.setLoggedUser(null);
+        props.setIsLogged(false);
+        localStorage.setItem('loggedUser', -1);
+        navigate("/login-register");
+        window.location.reload();
+    }
     
     useEffect(()=>{
         setUnapprovedImage(props.user.profile);
@@ -88,6 +97,7 @@ function ProfileSettings(props) {
                 {/* <p>{dateDay}/{dateMonth}/{dateYear}</p> */}
                 <p><span><SiGmail className='icon'/> e-mail:</span> {props.user.email}</p>
                 <p><span><BsFillPersonVcardFill className='icon'/> kullanıcı adı:</span> {props.user.username}</p>
+                <p className='logout' onClick={handleLogout}>Çıkış yap</p>
             </div>
             <div className='buttons'>
                 <button onClick={()=>{setSettings(true)}}><BsPencilSquare className='profile-edit-icon'/></button>

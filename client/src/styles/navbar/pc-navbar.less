@@ -229,6 +229,10 @@
     bottom: 0px;
     left: 0px;
     width: 100%;
+    button.link{
+        background-color: transparent;
+        border: none;
+    }
     .link{
         flex: 1;
         display: flex;
@@ -240,6 +244,15 @@
         font-size: 1.5rem;
         text-decoration: none;
         color: @color-grey;
+        .frame{
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            img{
+                border-radius: 100px;
+                max-height: 40px;
+            }
+        }
         .fill{
             display: none;
         }
@@ -266,6 +279,13 @@
     }
     .link:not(:last-child){
         border-right: 1px solid @color-grey-01;
+    }
+}
+.mobile-navbar.dark{
+    background-color: @color-dark1;
+    box-shadow: 0px 5px 15px @color-dark;
+    .link.active{
+        color: @color-white;
     }
 }
 @media screen and (max-width: 2000px) {

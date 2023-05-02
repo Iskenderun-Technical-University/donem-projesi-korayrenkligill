@@ -1,7 +1,11 @@
 @import '../variables.less';
+@margin-20: 0px 20%; 
+@margin-10: 0px 10%; 
+@margin-5: 0px 5%; 
+@margin-0: 0px 0%; 
 
 .profile{
-    margin: 0px 20%;
+    margin: @margin-20;
     .profile-notchange{
         margin-top: 50px;
         display: flex;
@@ -33,6 +37,17 @@
                         margin-right: 5px;
                     }
                 }
+            }
+            .logout{
+                color: @color-mavi;
+                font-size: .9rem;
+                margin-top: 10px;
+                display: inline-block;
+                cursor: pointer;
+                transition: all .3s;
+            }
+            .logout:hover{
+                color: @color-black;
             }
         }
         .buttons{
@@ -244,6 +259,83 @@
                     color: @color-white;
                 }
             }
+        }
+    }
+}
+@media screen and (max-width: 1160px) {
+    .profile{
+        margin: @margin-10;
+    }
+}
+@media screen and (max-width: 880px) {
+    .profile{
+        margin: @margin-0;
+    }
+}
+@media screen and (max-width: 700px) {
+    .profile{
+        .profile-change{
+            flex-direction: column;
+            .texts{
+                margin: 0px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 550px) {
+    .profile{
+        .profile-change{
+            .texts{
+                width: 80%;
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .name{
+                        margin: 0px;
+                    }
+                }
+                .passwords{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    div:nth-child(1){
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        .password{
+                            margin: 0px;
+                        }
+                    }
+                    div:nth-child(2){
+                        display: block;
+                    }
+                }
+            }
+        }
+        .profile-notchange{
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    .profile{
+        .profile-change{
+            padding: 10px;
+            .texts{
+                width: 100%;
+                .passwords{
+                    div:nth-child(2){
+                        margin-bottom: 30px;
+                    }
+                }
+            }
+        }
+        .profile-notchange{
+            flex-direction: column;
+            text-align: center;
         }
     }
 }

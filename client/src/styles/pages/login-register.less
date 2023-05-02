@@ -6,12 +6,18 @@
     justify-content: center;
     margin-top: 50px;
     overflow: hidden;
+    .frame{
+        img{
+            width: 100%;
+        }
+    }
     .login-or-register{
         display: flex;
         width: 263px;
         overflow: hidden;
         align-items: center;
         justify-content: flex-start;
+        margin-bottom: 50px;
         .login,.register{
             display: flex;
             flex-direction: column;
@@ -81,4 +87,10 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 900px) {
+    .frame{
+        display: none;
+    }    
 }

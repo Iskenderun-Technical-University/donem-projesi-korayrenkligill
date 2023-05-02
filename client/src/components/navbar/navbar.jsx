@@ -116,11 +116,12 @@ function Navbar(props){
         )
     else
         return(
-        <div className='mobile-navbar'>
+        <div className={props.theme ? 'mobile-navbar light' : 'mobile-navbar dark'}>
             <NavLink to="/" className="link"><BsHouseDoor className='not-fill'/><BsHouseDoorFill className='fill'/><span>Gösteriler</span></NavLink>
             <NavLink to="/salonumuz" className="link"><BsGeoAlt className='not-fill'/><BsGeoAltFill className='fill'/><span>Salonumuz</span></NavLink>
             <NavLink to="/hakkımızda" className="link"><BsInfoCircle className='not-fill'/><BsInfoCircleFill className='fill'/><span>Hakkımızda</span></NavLink>
-            <NavLink to="/profil" className="link"><BsPerson className='not-fill'/><BsPersonFill className='fill'/><span>Profil</span></NavLink>
+            <button onClick={()=>{props.setTheme(!props.theme)}} className='link'>{!props.theme ? <BsFillSunFill className='profile-detail-icon'/> : <BsFillMoonFill className='profile-detail-icon'/>}</button>
+            <NavLink to={props.isLogged ? "/profil" : "/login-register"} className="link">{props.isLogged ? <div className='frame'><img src={props.user.profile}/></div> : <div><BsPerson className='not-fill'/><BsPersonFill className='fill'/><span>Profil</span></div>}</NavLink>
         </div>
         )
 }

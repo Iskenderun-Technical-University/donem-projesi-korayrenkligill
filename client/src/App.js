@@ -36,6 +36,16 @@ function App() {
     localStorage.setItem('theme',choosedTheme);
   }
 
+  const [width, setWidth]   = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+  const updateDimensions = () => {
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+  }
+  useEffect(() => {
+      window.addEventListener("resize", updateDimensions);
+      return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
     useEffect(() => {
       
@@ -104,13 +114,13 @@ function App() {
               <Route path='/' element={<MainPage theatres={theatres} theme={theme}/>}/>
               <Route path='/hakkımızda' element={<Company theme={theme}/>}/>
               <Route path='/salonumuz' element={<Place theme={theme}/>}/>
-              {isLogged && <Route path='/profil' element={<Profile user={loggedUser} users={users} theatres={theatres} theme={theme}/>}/>}
-              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin' element={<AdminDashboard users={users} data={data} theme={theme}/>}/>}
-              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/user-list' element={<AdminUserList users={users} theme={theme}/>}/>}
-              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/user-list/:id' element={<AdminUserDetail users={users} theme={theme}/>}/>}
-              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-list' element={<AdminTheatreList theatres={theatres} theme={theme}/>}/>}
-              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-list/:id' element={<AdminTheatreDetail theatres={theatres} theme={theme}/>}/>}
-              {isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-add' element={<AdminTheatreAdd theme={theme}/>}/>}
+              {isLogged && <Route path='/profil' element={<Profile user={loggedUser} users={users} theatres={theatres} theme={theme} setIsLogged={setIsLogged} setLoggedUser={setLoggedUser}/>}/>}
+              {width > 768 && isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin' element={<AdminDashboard users={users} data={data} theme={theme}/>}/>}
+              {width > 768 && isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/user-list' element={<AdminUserList users={users} theme={theme}/>}/>}
+              {width > 768 && isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/user-list/:id' element={<AdminUserDetail users={users} theme={theme}/>}/>}
+              {width > 768 && isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-list' element={<AdminTheatreList theatres={theatres} theme={theme}/>}/>}
+              {width > 768 && isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-list/:id' element={<AdminTheatreDetail theatres={theatres} theme={theme}/>}/>}
+              {width > 768 && isLogged && loggedUser.position.toLocaleLowerCase() === "admin" && <Route path='/admin/theatre-add' element={<AdminTheatreAdd theme={theme}/>}/>}
               <Route path='/theatre/detail/:id' element={<TheatreDetails theatres={theatres} user={loggedUser} setUser={setLoggedUser} theme={theme}/>}/>
               {!isLogged && <Route path='/login-register' element={<LoginRegister users={users} isLogged={isLogged} setIsLogged={setIsLogged} setLoggedUser={setLoggedUser} theme={theme}/>}/>}
               <Route path='/*' element={<ErrorPage theme={theme}/>}/>
