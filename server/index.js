@@ -75,11 +75,11 @@ app.get("/data", (req,res)=>{
 app.post('/user/add', (req, res) => {
   const user = req.body;
 
-  const sql = `INSERT INTO users (username, password, email, name, surname, position, gender, profile, ticket) 
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO users (username, password, email, name, surname, position, gender, profile) 
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   const values = [user.username, user.password, user.email, user.name, user.surname, 
-                  user.position, user.gender, user.profile, user.ticket];
+                  user.position, user.gender, user.profile];
 
   connection.query(sql, values, (err, result) => {
     if (err) return res.json(err);
