@@ -118,8 +118,8 @@ function AdminTheatreAdd(props) {
             {/* <div className='choosed-image'>
               <img src="" alt="" />
             </div> */}
-            <input className='form-item theatre-name' type="text" placeholder='Tiyatro adını giriniz..'  minlength="4" maxLength="50" value={name} onChange={e => setName(e.target.value)}/>
-            <textarea className='form-item theatre-description' type="text" rows="5"  placeholder='Tiyatro açıklaması giriniz..'  minLength="1" maxLength="200" value={trailer} onChange={e => setTrailer(e.target.value)}></textarea>
+            <input className='form-item theatre-name' type="text" placeholder='Tiyatro adını giriniz..'  minlength="1" maxLength="50" value={name} onChange={e => setName(e.target.value)}/>
+            <textarea className='form-item theatre-description' type="text" rows="5"  placeholder='Tiyatro açıklaması giriniz..'  minLength="1" maxLength="1000" value={trailer} onChange={e => setTrailer(e.target.value)}></textarea>
             <div className='number-input'>
               <label htmlFor="price">Fiyat:</label>
               <input className='theatre-price' id='price' type="number" min="0" placeholder='Tiyatro fiyatı giriniz..' value={price} onChange={e => setPrice(parseFloat(e.target.value))}/>
